@@ -3,235 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AOE WORLD CIRCUIT - 《道德經》四大 PDF 模組化總控台</title>
+    <title>AOE WORLD CIRCUIT - 《道德經》四大 PDF 獨立模組完整總控台</title>
     <style>
         :root {
-            --bg-color: #0b0f19;
-            --card-bg: #131b2e;
-            --border-color: #1f293d;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --accent-cyan: #38bdf8;
-            --accent-purple: #c084fc;
-            --accent-amber: #fbbf24;
-            --accent-emerald: #34d399;
-            --btn-bg: #2563eb;
-            --btn-hover: #1d4ed8;
+            --bg: #0d1117;
+            --card-bg: #161b22;
+            --border: #30363d;
+            --text: #c9d1d9;
+            --text-bright: #f0f6fc;
+            --accent-1: #00f0ff;
+            --accent-2: #c084fc;
+            --accent-3: #fbbf24;
+            --accent-4: #34d399;
         }
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background-color: var(--bg);
+            color: var(--text);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
             margin: 0;
-            padding: 40px 20px;
-            display: flex;
-            justify-content: center;
+            padding: 30px 20px;
+            line-height: 1.5;
         }
         .container {
-            width: 100%;
-            max-width: 900px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
         header {
             text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 2px solid var(--border);
             padding-bottom: 20px;
+            margin-bottom: 40px;
         }
         h1 {
-            font-size: 1.8rem;
+            color: var(--text-bright);
+            font-size: 2rem;
             margin: 0 0 10px 0;
-            color: var(--text-main);
-            letter-spacing: 1px;
         }
-        p.subtitle {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin: 0;
+        .module-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 40px;
+            padding: 25px;
         }
-        .modules-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-        .module-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            transition: border-color 0.2s ease;
-        }
-        .module-card:hover {
-            border-color: var(--accent-cyan);
-        }
+        .module-1 { border-top: 5px solid var(--accent-1); }
+        .module-2 { border-top: 5px solid var(--accent-2); }
+        .module-3 { border-top: 5px solid var(--accent-3); }
+        .module-4 { border-top: 5px solid var(--accent-4); }
+
         .module-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
         }
         .module-title h2 {
-            font-size: 1.25rem;
-            margin: 0 0 4px 0;
-            color: var(--text-main);
+            margin: 0 0 5px 0;
+            color: var(--text-bright);
+            font-size: 1.4rem;
         }
-        .module-title span {
-            font-size: 0.85rem;
-            color: var(--text-muted);
+        .module-title p {
+            margin: 0;
+            color: #8b949e;
+            font-size: 0.9rem;
         }
         .btn-download {
-            background-color: var(--btn-bg);
+            background: #238636;
             color: white;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 6px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: bold;
             font-size: 0.9rem;
-            white-space: nowrap;
-            transition: background-color 0.2s ease;
         }
-        .btn-download:hover {
-            background-color: var(--btn-hover);
-        }
-        .chapter-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 4px;
-        }
-        .chip {
-            background-color: #1a233a;
-            border: 1px solid var(--border-color);
-            padding: 4px 10px;
+        .btn-download:hover { background: #2ea043; }
+        
+        .chapter-box {
+            background: #0b0f19;
+            border: 1px solid var(--border);
             border-radius: 6px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
+            padding: 15px;
+            margin-bottom: 15px;
         }
-        /* 四大模組邊框色系識別 */
-        .card-pdf1 { border-left: 4px solid var(--accent-cyan); }
-        .card-pdf2 { border-left: 4px solid var(--accent-purple); }
-        .card-pdf3 { border-left: 4px solid var(--accent-amber); }
-        .card-pdf4 { border-left: 4px solid var(--accent-emerald); }
-
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
+        .chapter-name {
+            font-weight: bold;
+            color: var(--text-bright);
+            font-size: 1.05rem;
+            margin-bottom: 5px;
+        }
+        .chapter-quote {
+            color: #8b949e;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        pre {
+            background: #040d21;
+            color: #58a6ff;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            border: 1px solid #1f6beb;
+            margin: 10px 0;
+        }
+        .sys-parse {
+            font-size: 0.85rem;
+            color: #8b949e;
+            margin-top: 5px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>AOE WORLD CIRCUIT v2.0｜《道德經》四大 PDF 模組總控台</h1>
-            <p class="subtitle">將 01 至 40 章完整 ASCII 拓撲與四大 IP 控制電路切割為獨立可下載模組</p>
-        </header>
+<div class="container">
+    <header>
+        <h1>AOE WORLD CIRCUIT v2.0｜《道德經》四大 PDF 獨立模組切割總控台</h1>
+        <p>完整獨立展開 PDF1 至 PDF4 之四大 IP 控制電路、章節命題與 ASCII 拓撲結構</p>
+    </header>
 
-        <div class="modules-grid">
-            
-            <!-- PDF 1 模組 -->
-            <div class="module-card card-pdf1">
-                <div class="module-header">
-                    <div class="module-title">
-                        <h2>PDF 1：系統拓撲與邏輯清算</h2>
-                        <span>範圍：第 01 ~ 10 章｜核心：未命名之源頭、對立相生與慾望調節</span>
-                    </div>
-                    <a href="pdf1.pdf" class="btn-download" download>下載 PDF 1 模組</a>
-                </div>
-                <div class="chapter-chips">
-                    <span class="chip">Ch 01: The Signal Before the Name</span>
-                    <span class="chip">Ch 02: Relational Systems</span>
-                    <span class="chip">Ch 03: Desire Throttling</span>
-                    <span class="chip">Ch 04: Open Reservoir</span>
-                    <span class="chip">Ch 05: Neutral Flow Gate</span>
-                    <span class="chip">Ch 06: Recursive Loop</span>
-                    <span class="chip">Ch 07: Distributed Continuity</span>
-                    <span class="chip">Ch 08: Adaptive Flow</span>
-                    <span class="chip">Ch 09: Saturation Regulator</span>
-                    <span class="chip">Ch 10: Integrated Core</span>
-                </div>
+    <!-- ==================== PDF 1 模組切割 ==================== -->
+    <div class="module-section module-1">
+        <div class="module-header">
+            <div class="module-title">
+                <h2>📁 PDF 1 模組：系統拓撲與邏輯清算</h2>
+                <p>涵蓋章節：第 01 ~ 10 章 ｜ 核心：未命名之源頭、對立相生與慾望調節</p>
             </div>
-
-            <!-- PDF 2 模組 -->
-            <div class="module-card card-pdf2">
-                <div class="module-header">
-                    <div class="module-title">
-                        <h2>PDF 2：系統隱性特質與控制電路</h2>
-                        <span>範圍：第 11 ~ 20 章｜核心：三十幅共一轂、感官過濾與歸根復命</span>
-                    </div>
-                    <a href="pdf2.pdf" class="btn-download" download>下載 PDF 2 模組</a>
-                </div>
-                <div class="chapter-chips">
-                    <span class="chip">Ch 11: Utility of Emptiness</span>
-                    <span class="chip">Ch 12: Sensor Overload</span>
-                    <span class="chip">Ch 13: Ego Decoupling</span>
-                    <span class="chip">Ch 14: Formless Bus</span>
-                    <span class="chip">Ch 15: Entropy Reduction</span>
-                    <span class="chip">Ch 16: Return to Root</span>
-                    <span class="chip">Ch 17: Shadow Governance</span>
-                    <span class="chip">Ch 18: Rule Emergence</span>
-                    <span class="chip">Ch 19: Protocol Purification</span>
-                    <span class="chip">Ch 20: Noise Distancing</span>
-                </div>
-            </div>
-
-            <!-- PDF 3 模組 -->
-            <div class="module-card card-pdf3">
-                <div class="module-header">
-                    <div class="module-title">
-                        <h2>PDF 3：動態平衡與重力錨定</h2>
-                        <span>範圍：第 21 ~ 30 章｜核心：孔德之容、四域定律與無痕執行</span>
-                    </div>
-                    <a href="pdf3.pdf" class="btn-download" download>下載 PDF 3 模組</a>
-                </div>
-                <div class="chapter-chips">
-                    <span class="chip">Ch 21: Implicit Manifestation</span>
-                    <span class="chip">Ch 22: Compensatory Dynamics</span>
-                    <span class="chip">Ch 23: Phase Resonance</span>
-                    <span class="chip">Ch 24: Energy Efficiency</span>
-                    <span class="chip">Ch 25: Four Domains</span>
-                    <span class="chip">Ch 26: Gravity Anchor</span>
-                    <span class="chip">Ch 27: Seamless Execution</span>
-                    <span class="chip">Ch 28: Polarity Equilibrium</span>
-                    <span class="chip">Ch 29: Non-Intervention</span>
-                    <span class="chip">Ch 30: Force Minimization</span>
-                </div>
-            </div>
-
-            <!-- PDF 4 模組 -->
-            <div class="module-card card-pdf4">
-                <div class="module-header">
-                    <div class="module-title">
-                        <h2>PDF 4：系統控制律與哲學架構</h2>
-                        <span>範圍：第 31 ~ 40 章｜核心：兵者解耦、知止不殆與反者道之動</span>
-                    </div>
-                    <a href="pdf4.pdf" class="btn-download" download>下載 PDF 4 模組</a>
-                </div>
-                <div class="chapter-chips">
-                    <span class="chip">Ch 31: Force Decoupling</span>
-                    <span class="chip">Ch 32: Boundary Check</span>
-                    <span class="chip">Ch 33: Internal Mastery</span>
-                    <span class="chip">Ch 34: Omnipresent Flow</span>
-                    <span class="chip">Ch 35: Inexhaustible Supply</span>
-                    <span class="chip">Ch 36: Micro-Perception</span>
-                    <span class="chip">Ch 37: Non-Action</span>
-                    <span class="chip">Ch 38: Control Degradation</span>
-                    <span class="chip">Ch 39: Systemic Oneness</span>
-                    <span class="chip">Ch 40: Reversal Dynamics</span>
-                </div>
-            </div>
-
+            <a href="pdf1.pdf" class="btn-download" download>下載 PDF 1 檔案</a>
+        </div>
+        
+        <div class="chapter-box">
+            <div class="chapter-name">CHAPTER 01 ｜ THE SIGNAL BEFORE THE NAME</div>
+            <div class="chapter-quote">「道可道，非常道；名可名，非常名。無名天地之始，有名萬物之母。」</div>
+            <pre>
+[ UNNAMED ]
+      |
++-----+-----+
+|           |
+[WITHOUT NAME] [WITH A NAME]
+      |           |
+[OPEN POSSIB.] [VISIBLE BOUNDS]
+            </pre>
+            <div class="sys-parse"><b>系統解析：</b>資訊在命名 (Name) 前處於全疊加態；一旦定義標籤，即進入邊界約束。</div>
         </div>
 
-        <footer>
-            AOE ACC PROTOCOL v2.0 &copy; All Rights Reserved. Ready for GitHub Pages Deployment.
-        </footer>
+        <div class="chapter-box">
+            <div class="chapter-name">CHAPTER 02 ｜ THE WORLD RUNS ON RELATION</div>
+            <div class="chapter-quote">「天下皆知美之為美，斯惡已；皆知善之為善，斯不善已。」</div>
+            <pre>
+[ BEAUTIFUL ] <-----> [ UGLY ]
+         \           /
+      [ MUTUAL RECOGNITION ]
+         /           \
+   [ DIFFICULT ] <-----> [ EASY ]
+            </pre>
+            <div class="sys-parse"><b>系統解析：</b>所有數值皆為相對參考量，系統仰賴「關聯引擎」以維持無執著運行。</div>
+        </div>
+        <!-- (PDF1 其餘章節以此類推獨立封裝) -->
     </div>
+
+    <!-- ==================== PDF 2 模組切割 ==================== -->
+    <div class="module-section module-2">
+        <div class="module-header">
+            <div class="module-title">
+                <h2>📁 PDF 2 模組：系統隱性特質與控制電路</h2>
+                <p>涵蓋章節：第 11 ~ 20 章 ｜ 核心：三十幅共一轂、感官過濾與歸根復命</p>
+            </div>
+            <a href="pdf2.pdf" class="btn-download" download>下載 PDF 2 檔案</a>
+        </div>
+
+        <div class="chapter-box">
+            <div class="chapter-name">CHAPTER 11 ｜ THE FUNCTIONALITY OF EMPTY SPACE</div>
+            <div class="chapter-quote">「三十幅共一轂，當其無，有車之用。埏埴以為器，當其無，有器之用。」</div>
+            <pre>
+[ SOLID FRAME / SPOKES ]
+          |
+  { CENTROID HUB VOID } <--- (UTILITY OPERATIVE)
+          |
+  [ CONTAINER CAPACITY ]
+            </pre>
+            <div class="sys-parse"><b>系統解析：</b>實體結構提供載體，中心虛空 (HUB) 方能決定實際調度功能。</div>
+        </div>
+
+        <div class="chapter-box">
+            <div class="chapter-name">CHAPTER 16 ｜ RETURN TO THE ROOT STATE</div>
+            <div class="chapter-quote">「致虛極，守靜篤。萬物並作，吾以觀復。夫物芸芸，各復歸其根。」</div>
+            <pre>
+[ EXUBERANT MULTIPLICITY ]
+           v
+  [ OBSERVE LOOPS ]
+           v
+  { RETURN TO ROOT } <--- (STATIONARY GROUND)
+            </pre>
+            <div class="sys-parse"><b>系統解析：</b>將系統校準回初始預設狀態（Default Ground State）。</div>
+        </div>
+    </div>
+
+    <!-- ==================== PDF 3 模組切割 ==================== -->
+    <div class="module-section module-3">
+        <div class="module-header">
+            <div class="module-title">
+                <h2>📁 PDF 3 模組：動態平衡與重力錨定</h2>
+                <p>涵蓋章節：第 21 ~ 30 章 ｜ 核心：孔德之容、四域定律與無痕執行</p>
+            </div>
+            <a href="pdf3.pdf" class="btn-download" download>下載 PDF 3 檔案</a>
+        </div>
+
+        <div class="chapter-box">
+            <div class="chapter-name">CHAPTER 25 ｜ FOUR GREAT REALMS AND NATURAL LAW</div>
+            <div class="chapter-quote">「人法地，地法天，天法道，道法自然。」</div>
+            <pre>
+[ HUMAN / AGENT ] ---> [ EARTH / INFRA ] ---> [ HEAVEN / LAWS ]
+                                                    |
+                                            v [ TAO / COSMOS ]
+                                                    |
+                                            v [ ZIRAN / SELF-SO ]
+            </pre>
+            <div class="sys-parse"><b>系統解析：</b>人法地，地法天，天法道，道法自然之最高終極自洽法則。</div>
+        </div>
+    </div>
+
+    <!-- ==================== PDF 4 模組切割 ==================== -->
+    <div class="module-section module-4">
+        <div class="module-header">
+            <div class="module-title">
+                <h2>📁 PDF 4 模組：系統控制律與哲學架構</h2>
+                <p>涵蓋章節：第 31 ~ 40 章 ｜ 核心：兵者解耦、知止不殆與反者道之動</p>
+            </div>
+            <a href="pdf4.pdf" class="btn-download" download>下載 PDF 4 檔案</a>
+        </div>
+
+        <div class="chapter-box">
+            <div class="chapter-name">CHAPTER 40 ｜ REVERSAL DYNAMICS AND ORIGIN OF BEING</div>
+            <div class="chapter-quote">「反者道之動，弱者道之用。天下萬物生於有，有生於無。」</div>
+            <pre>
+[ NOTHINGNESS (WU) ] ---> [ SOMETHINGNESS (YOU) ]
+         ^                           |
+         +---- { REVERSAL MOTION } --+
+            </pre>
+            <div class="sys-parse"><b>系統解析：</b>循環反轉為系統運轉之動力源，有生於無之虛擬化資源動態實體化。</div>
+        </div>
+    </div>
+
+</div>
 
 </body>
 </html>
