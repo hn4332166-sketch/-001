@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AOE WORLD CIRCUIT - 道德經系統說明目錄 (PDF 1 - 4)</title>
+<style>
+  :root {
+    --bg-color: #0d1117;
+    --card-bg: #161b22;
+    --border-color: #30363d;
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --accent-blue: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-purple: #bc8cff;
+    --code-bg: #161b22;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 24px 16px;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #0d1117;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 32px;
+  }
+
+  h1 {
+    font-size: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    color: #f0f6fc;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    margin-top: 28px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+    color: var(--accent-blue);
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #f0f6fc;
+  }
+
+  p { margin-bottom: 14px; color: var(--text-primary); }
+
+  pre {
+    background-color: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 16px;
+    overflow-x: auto;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.9rem;
+    color: #e6edf3;
+    margin-bottom: 18px;
+  }
+
+  code {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    background-color: rgba(110,118,129,0.4);
+    padding: 0.2em 0.4em;
+    border-radius: 6px;
+    font-size: 85%;
+  }
+
+  ul {
+    margin-left: 24px;
+    margin-bottom: 16px;
+  }
+
+  li { margin-bottom: 6px; }
+
+  .pdf-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--accent-blue);
+    border-radius: 6px;
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+
+  .pdf-card h3 {
+    margin-top: 0;
+    color: var(--accent-blue);
+  }
+
+  .ip-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    margin-bottom: 20px;
+  }
+
+  .ip-table th, .ip-table td {
+    border: 1px solid var(--border-color);
+    padding: 10px 14px;
+    text-align: left;
+  }
+
+  .ip-table th {
+    background-color: var(--card-bg);
+    color: #f0f6fc;
+  }
+
+  .footer {
+    margin-top: 40px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 16px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>道德經 AOE WORLD CIRCUIT 系統說明目錄 (PDF 1 - 4)</h1>
+  <p>本儲存庫包含《道德經》四大模組之系統拓撲與控制電路筆記。本頁面提供 <strong>PDF 1 至 PDF 4</strong> 的網頁目錄說明，方便 Git / GitHub Pages 版本控制與線上檢閱。</p>
+
+  <h2>📚 檔案模組結構總覽 (Directory Architecture)</h2>
+  <pre><code>.
+├── index.html                     # 本目錄說明網頁 (GitHub Pages 進入點)
+├── PDF_1_DaoDeJing_001_010.pdf    # 模組一：系統基礎與拓撲啟動 (01-10 章)
+├── PDF_2_DaoDeJing_011_020.pdf    # 模組二：空間容積與狀態轉移 (11-20 章)
+├── PDF_3_DaoDeJing_021_030.pdf    # 模組三：深層邏輯與策略反轉 (21-30 章)
+└── PDF_4_DaoDeJing_031_040.pdf    # 模組四：非暴力解耦與道經總結 (31-40 章)</code></pre>
+
+  <h2>📄 各 PDF 模組詳細內容與章節索引</h2>
+
+  <!-- PDF 1 -->
+  <div class="pdf-card">
+    <h3>🔹 PDF 1: 系統基礎與拓撲啟動 (Chapters 01 - 10)</h3>
+    <p><strong>主旨：</strong>定義系統底層介面、雙重性對偶、無為自動化與初始拓撲架構。</p>
+
+    <ul>
+      <li><code>Ch 01</code>: 系統界定與觀察介面 (System Boundaries & Interface)</li>
+      <li><code>Ch 02</code>: 相生對偶性與無為自動化 (Duality & Automation)</li>
+      <li><code>Ch 03</code>: 狀態重置與系統平衡 (State Reset & Equilibrium)</li>
+      <li><code>Ch 04</code>: 無窮深層驅動 (Inexhaustible Core Drive)</li>
+      <li><code>Ch 05</code>: 中空無偏與動態穩定 (Empty Space & Dynamic Stability)</li>
+      <li><code>Ch 06</code>: 谷神不死與永續調用 (Continuous System Availability)</li>
+      <li><code>Ch 07</code>: 無私延展與長久運行 (Selfless Expansion & Longevity)</li>
+      <li><code>Ch 08</code>: 水樣流動與最適應 (Fluid Adaptation & Optimal Execution)</li>
+      <li><code>Ch 09</code>: 盈滿限制與適時退場 (Overflow Constraint & Exit Timing)</li>
+      <li><code>Ch 10</code>: 載營魄抱一與靈魂校準 (Soul Alignment & Non-Interference)</li>
+    </ul>
+  </div>
+
+  <!-- PDF 2 -->
+  <div class="pdf-card" style="border-left-color: var(--accent-green);">
+    <h3 style="color: var(--accent-green);">🔹 PDF 2: 空間容積與狀態轉移 (Chapters 11 - 20)</h3>
+    <p><strong>主旨：</strong>解析系統容積（空間）、感知降噪、寵辱不驚與狀態反轉。</p>
+    <ul>
+      <li><code>Ch 11</code>: 虛空無用之用 (Empty Space as Functional Core)</li>
+      <li><code>Ch 12</code>: 信號過載與感官降噪 (Signal Noise Filtering)</li>
+      <li><code>Ch 13</code>: 系統自我界定與寵辱不驚 (Self-Identity & Load Protection)</li>
+      <li><code>Ch 14</code>: 夷微希之視聽無形 (Unseen System Mechanics)</li>
+      <li><code>Ch 15</code>: 古之善為士者與動態沉澱 (Dynamic Stabilization)</li>
+      <li><code>Ch 16</code>: 致虛極守靜篤與歸根復命 (State Reset & Root Return)</li>
+      <li><code>Ch 17</code>: 太上不知有之與最高授權 (Silent Governance & High Delegation)</li>
+      <li><code>Ch 18</code>: 大大道廢與備援機制 (Backup Fallback System)</li>
+      <li><code>Ch 19</code>: 絕聖棄智與返璞歸真 (Simplification & Core Focus)</li>
+      <li><code>Ch 20</code>: 絕學無憂與系統獨行 (Independent Execution & Low Coupling)</li>
+    </ul>
+  </div>
+
+  <!-- PDF 3 -->
+  <div class="pdf-card" style="border-left-color: var(--accent-purple);">
+    <h3 style="color: var(--accent-purple);">🔹 PDF 3: 深層邏輯與策略反轉 (Chapters 21 - 30)</h3>
+    <p><strong>主旨：</strong>深層變數維護、曲則全之反轉動力學、曲折轉化與控制策略。</p>
+    <ul>
+      <li><code>Ch 21</code>: 孔德之容與唯道是從 (Deep State Tracking)</li>
+      <li><code>Ch 22</code>: 曲則全與反向負回授 (Negative Feedback Dynamics)</li>
+      <li><code>Ch 23</code>: 希言自然與動能一致性 (Natural Flow Alignment)</li>
+      <li><code>Ch 24</code>: 企者不立與無效過度載入 (Anti-Overreaching Rule)</li>
+      <li><code>Ch 25</code>: 物壯則老與四大常數 (System Matrix Constants)</li>
+      <li><code>Ch 26</code>: 重為輕根靜為躁君 (Rooting & Gravity Control)</li>
+      <li><code>Ch 27</code>: 善行無轍跡與完美無縫執行 (Seamless Operation)</li>
+      <li><code>Ch 28</code>: 知其雄守其雌與模組通道 (Dual-Channel Routing)</li>
+      <li><code>Ch 29</code>: 為者敗之與非侵入式維護 (Non-Intrusive Management)</li>
+      <li><code>Ch 30</code>: 以道佐人主者不以兵強 (Minimizing Force Consumption)</li>
+    </ul>
+  </div>
+
+  <!-- PDF 4 -->
+  <div class="pdf-card" style="border-left-color: #f78166;">
+    <h3 style="color: #f78166;">🔹 PDF 4: 非暴力解耦與道經總結 (Chapters 31 - 40)</h3>
+    <p><strong>主旨：</strong>兵者不祥之強制解耦、知止邊界、微明對偶、無為自動化與《道經》終極封裝。</p>
+    <ul>
+      <li><code>Ch 31</code>: 夫兵者不祥之器 (Decoupling Force Instruments)</li>
+      <li><code>Ch 32</code>: 道常無名樸與知止 (Unnamed Simplicity & Bounds)</li>
+      <li><code>Ch 33</code>: 自知者明與勝己者強 (Internal Mastery & Diagnostics)</li>
+      <li><code>Ch 34</code>: 大道泛兮與無感擴展開發 (Omnipresent Flow & Serverless)</li>
+      <li><code>Ch 35</code>: 執大象天下往 (The Great Image & Inexhaustible Source)</li>
+      <li><code>Ch 36</code>: 微明對偶與柔弱勝剛強 (Micro-Perception & Soft Control)</li>
+      <li><code>Ch 37</code>: 道常無為而無不為 (Non-Action & Auto-Settling System)</li>
+      <li><code>Ch 38</code>: 上德不德與控制降級 (Hierarchy of Control Degradation)</li>
+      <li><code>Ch 39</code>: 昔之得一與基底支撐 (Systemic Oneness & Foundation)</li>
+      <li><code>Ch 40</code>: 反者道之動與有生於無 (Reversal Dynamics & Wu-To-You)</li>
+    </ul>
+  </div>
+
+  <h2>🤖 四大 IP 控制矩陣 (Four-IP Matrix)</h2>
+  <p>每個 PDF 章節中均包含以下四個專屬角色的控制任務分配：</p>
+
+  <table class="ip-table">
+    <thead>
+      <tr>
+        <th>IP 角色名稱</th>
+        <th>職責定義</th>
+        <th>模組功能</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>O_DINOCAT</code></td>
+        <td>結構模組 (Structure)</td>
+        <td>負責拓撲流向、頁面邊界與骨架佈局</td>
+      </tr>
+      <tr>
+        <td><code>A_MAGICAT</code></td>
+        <td>語境模組 (Context)</td>
+        <td>負責深層哲理對齊、語意解析與動態翻譯</td>
+      </tr>
+      <tr>
+        <td><code>B_DEVILCAT</code></td>
+        <td>約束模組 (Constraints)</td>
+        <td>防範 ASCII 拓撲折行、字元寬度超標與分頁溢出</td>
+      </tr>
+      <tr>
+        <td><code>AB_LIQUIDCAT</code></td>
+        <td>轉化模組 (Transformation)</td>
+        <td>負責跨維度轉譯與 PDF 結構之最終現實檢驗</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>🛠️ Git 指令參考</h2>
+  <p>部署至 GitHub / Git 倉庫範例：</p>
+  <pre><code>git add index.html
+git commit -m "docs: 新增 index.html 專案目錄頁面"
+git push origin main</code></pre>
+
+  <div class="footer">
+    AOE WORLD CIRCUIT &copy; Dao De Jing Topology Circuit Documentation
+  </div>
+</div>
+
+</body>
+</html>
