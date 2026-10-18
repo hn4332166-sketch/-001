@@ -1,270 +1,1102 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AOE WORLD CIRCUIT - 道德經系統說明目錄 (PDF 1 - 4)</title>
-<style>
-  :root {
-    --bg-color: #0d1117;
-    --card-bg: #161b22;
-    --border-color: #30363d;
-    --text-primary: #c9d1d9;
-    --text-secondary: #8b949e;
-    --accent-blue: #58a6ff;
-    --accent-green: #3fb950;
-    --accent-purple: #bc8cff;
-    --code-bg: #161b22;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AOE WORLD CIRCUIT - 道德經系統拓撲 Master Specification (PDF 1 - 4)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;600;700&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0b0f17;
+      color: #c9d1d9;
+    }
+    
+    code, pre, .mono {
+      font-family: 'Fira Code', monospace;
+    }
+    
+    .ascii-art {
+      font-family: 'Fira Code', monospace;
+      white-space: pre;
+      line-height: 1.25;
+      font-size: 0.82rem;
+      letter-spacing: 0px;
+    }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+    .glow-blue {
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+    }
 
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-primary);
-    line-height: 1.6;
-    padding: 24px 16px;
-  }
+    .glow-green {
+      box-shadow: 0 0 15px rgba(74, 222, 128, 0.15);
+    }
 
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: #0d1117;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    padding: 32px;
-  }
+    .glow-purple {
+      box-shadow: 0 0 15px rgba(192, 132, 252, 0.15);
+    }
 
-  h1 {
-    font-size: 2rem;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 12px;
-    margin-bottom: 20px;
-    color: #f0f6fc;
-  }
+    .glow-amber {
+      box-shadow: 0 0 15px rgba(251, 191, 36, 0.15);
+    }
 
-  h2 {
-    font-size: 1.4rem;
-    margin-top: 28px;
-    margin-bottom: 14px;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 8px;
-    color: var(--accent-blue);
-  }
-
-  h3 {
-    font-size: 1.15rem;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    color: #f0f6fc;
-  }
-
-  p { margin-bottom: 14px; color: var(--text-primary); }
-
-  pre {
-    background-color: var(--code-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    padding: 16px;
-    overflow-x: auto;
-    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-    font-size: 0.9rem;
-    color: #e6edf3;
-    margin-bottom: 18px;
-  }
-
-  code {
-    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-    background-color: rgba(110,118,129,0.4);
-    padding: 0.2em 0.4em;
-    border-radius: 6px;
-    font-size: 85%;
-  }
-
-  ul {
-    margin-left: 24px;
-    margin-bottom: 16px;
-  }
-
-  li { margin-bottom: 6px; }
-
-  .pdf-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-left: 4px solid var(--accent-blue);
-    border-radius: 6px;
-    padding: 16px;
-    margin-bottom: 20px;
-  }
-
-  .pdf-card h3 {
-    margin-top: 0;
-    color: var(--accent-blue);
-  }
-
-  .ip-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 16px;
-    margin-bottom: 20px;
-  }
-
-  .ip-table th, .ip-table td {
-    border: 1px solid var(--border-color);
-    padding: 10px 14px;
-    text-align: left;
-  }
-
-  .ip-table th {
-    background-color: var(--card-bg);
-    color: #f0f6fc;
-  }
-
-  .footer {
-    margin-top: 40px;
-    border-top: 1px solid var(--border-color);
-    padding-top: 16px;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    text-align: center;
-  }
-</style>
+    /* Custom Scrollbar for Pre blocks */
+    pre::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    pre::-webkit-scrollbar-track {
+      background: #161b22;
+      border-radius: 4px;
+    }
+    pre::-webkit-scrollbar-thumb {
+      background: #30363d;
+      border-radius: 4px;
+    }
+    pre::-webkit-scrollbar-thumb:hover {
+      background: #484f58;
+    }
+  </style>
 </head>
-<body>
+<body class="min-h-screen pb-20">
 
-<div class="container">
-  <h1>道德經 AOE WORLD CIRCUIT 系統說明目錄 (PDF 1 - 4)</h1>
-  <p>本儲存庫包含《道德經》四大模組之系統拓撲與控制電路筆記。本頁面提供 <strong>PDF 1 至 PDF 4</strong> 的網頁目錄說明，方便 Git / GitHub Pages 版本控制與線上檢閱。</p>
+  <!-- Sticky Header Nav -->
+  <header class="sticky top-0 z-50 bg="#0b0f17"/90 backdrop-blur-md border-b border-gray-800 px-4 py-3">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-3">
+        <span class="inline-block w-3 h-3 rounded-full bg-cyan-400 animate-pulse"></span>
+        <h1 class="text-lg font-bold tracking-wider text-white mono">AOE_WORLD_CIRCUIT // SPEC_V4.0</h1>
+      </div>
+      <nav class="flex flex-wrap justify-center gap-2 text-xs mono">
+        <a href="#pdf1" class="px-3 py-1.5 rounded bg-sky-950/80 text-sky-400 border border-sky-800 hover:bg-sky-900 transition">PDF 1 (01-10)</a>
+        <a href="#pdf2" class="px-3 py-1.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800 hover:bg-emerald-900 transition">PDF 2 (11-20)</a>
+        <a href="#pdf3" class="px-3 py-1.5 rounded bg-purple-950/80 text-purple-400 border border-purple-800 hover:bg-purple-900 transition">PDF 3 (21-30)</a>
+        <a href="#pdf4" class="px-3 py-1.5 rounded bg-amber-950/80 text-amber-400 border border-amber-800 hover:bg-amber-900 transition">PDF 4 (31-40)</a>
+        <a href="#ip-matrix" class="px-3 py-1.5 rounded bg-gray-800 text-gray-300 border border-gray-700 hover:bg-gray-700 transition">4-IP Matrix</a>
+      </nav>
+    </div>
+  </header>
 
-  <h2>📚 檔案模組結構總覽 (Directory Architecture)</h2>
-  <pre><code>.
-├── index.html                     # 本目錄說明網頁 (GitHub Pages 進入點)
-├── PDF_1_DaoDeJing_001_010.pdf    # 模組一：系統基礎與拓撲啟動 (01-10 章)
-├── PDF_2_DaoDeJing_011_020.pdf    # 模組二：空間容積與狀態轉移 (11-20 章)
-├── PDF_3_DaoDeJing_021_030.pdf    # 模組三：深層邏輯與策略反轉 (21-30 章)
-└── PDF_4_DaoDeJing_031_040.pdf    # 模組四：非暴力解耦與道經總結 (31-40 章)</code></pre>
+  <!-- Hero & Spec Intro -->
+  <main class="max-w-7xl mx-auto px-4 mt-8 space-y-12">
+    <section class="bg-gradient-to-b from-gray-900 to-gray-950 border border-gray-800 rounded-xl p-6 sm:p-8 relative overflow-hidden shadow-2xl">
+      <div class="absolute -right-20 -top-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="relative z-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950 border border-cyan-800 text-cyan-400 text-xs font-mono mb-4">
+          <span>MASTER ARCHITECTURE SPECIFICATION</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+          道德經 AOE Circuit System Topology <span class="text-cyan-400 font-mono text-2xl">(Ch 01 - Ch 40)</span>
+        </h2>
+        <p class="text-gray-400 max-w-3xl text-sm sm:text-base leading-relaxed mb-6">
+          本文件為 Git 版本控制系統量身打造，完整封裝《道德經》道經四篇（PDF 1 至 PDF 4，共 40 章）之 **ASCII 電路拓撲圖、邏輯控制模組、降噪機制與四大 IP 矩陣規範**。所有電路圖皆嚴格遵守 64-char 寬度約束與高階系統工程設計。
+        </p>
 
-  <h2>📄 各 PDF 模組詳細內容與章節索引</h2>
+        <!-- Quick Download Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4 border-t border-gray-800/80">
+          <a href="PDF_1_DaoDeJing_001_010.pdf" download class="p-4 rounded-lg bg-gray-900 border border-sky-800/60 hover:border-sky-500 transition group flex flex-col justify-between">
+            <div>
+              <div class="text-xs text-sky-400 font-mono font-semibold">MODULE_01</div>
+              <div class="text-white font-bold mt-1 text-sm group-hover:text-sky-300">PDF 1: 拓撲啟動 (01-10)</div>
+            </div>
+            <div class="mt-4 text-xs text-gray-500 font-mono flex items-center justify-between">
+              <span>PDF_1_DaoDeJing.pdf</span>
+              <span class="text-sky-400 group-hover:translate-x-1 transition">↓</span>
+            </div>
+          </a>
 
-  <!-- PDF 1 -->
-  <div class="pdf-card">
-    <h3>🔹 PDF 1: 系統基礎與拓撲啟動 (Chapters 01 - 10)</h3>
-    <p><strong>主旨：</strong>定義系統底層介面、雙重性對偶、無為自動化與初始拓撲架構。</p>
+          <a href="PDF_2_DaoDeJing_011_020.pdf" download class="p-4 rounded-lg bg-gray-900 border border-emerald-800/60 hover:border-emerald-500 transition group flex flex-col justify-between">
+            <div>
+              <div class="text-xs text-emerald-400 font-mono font-semibold">MODULE_02</div>
+              <div class="text-white font-bold mt-1 text-sm group-hover:text-emerald-300">PDF 2: 容積轉移 (11-20)</div>
+            </div>
+            <div class="mt-4 text-xs text-gray-500 font-mono flex items-center justify-between">
+              <span>PDF_2_DaoDeJing.pdf</span>
+              <span class="text-emerald-400 group-hover:translate-x-1 transition">↓</span>
+            </div>
+          </a>
 
-    <ul>
-      <li><code>Ch 01</code>: 系統界定與觀察介面 (System Boundaries & Interface)</li>
-      <li><code>Ch 02</code>: 相生對偶性與無為自動化 (Duality & Automation)</li>
-      <li><code>Ch 03</code>: 狀態重置與系統平衡 (State Reset & Equilibrium)</li>
-      <li><code>Ch 04</code>: 無窮深層驅動 (Inexhaustible Core Drive)</li>
-      <li><code>Ch 05</code>: 中空無偏與動態穩定 (Empty Space & Dynamic Stability)</li>
-      <li><code>Ch 06</code>: 谷神不死與永續調用 (Continuous System Availability)</li>
-      <li><code>Ch 07</code>: 無私延展與長久運行 (Selfless Expansion & Longevity)</li>
-      <li><code>Ch 08</code>: 水樣流動與最適應 (Fluid Adaptation & Optimal Execution)</li>
-      <li><code>Ch 09</code>: 盈滿限制與適時退場 (Overflow Constraint & Exit Timing)</li>
-      <li><code>Ch 10</code>: 載營魄抱一與靈魂校準 (Soul Alignment & Non-Interference)</li>
-    </ul>
-  </div>
+          <a href="PDF_3_DaoDeJing_021_030.pdf" download class="p-4 rounded-lg bg-gray-900 border border-purple-800/60 hover:border-purple-500 transition group flex flex-col justify-between">
+            <div>
+              <div class="text-xs text-purple-400 font-mono font-semibold">MODULE_03</div>
+              <div class="text-white font-bold mt-1 text-sm group-hover:text-purple-300">PDF 3: 反轉動力 (21-30)</div>
+            </div>
+            <div class="mt-4 text-xs text-gray-500 font-mono flex items-center justify-between">
+              <span>PDF_3_DaoDeJing.pdf</span>
+              <span class="text-purple-400 group-hover:translate-x-1 transition">↓</span>
+            </div>
+          </a>
 
-  <!-- PDF 2 -->
-  <div class="pdf-card" style="border-left-color: var(--accent-green);">
-    <h3 style="color: var(--accent-green);">🔹 PDF 2: 空間容積與狀態轉移 (Chapters 11 - 20)</h3>
-    <p><strong>主旨：</strong>解析系統容積（空間）、感知降噪、寵辱不驚與狀態反轉。</p>
-    <ul>
-      <li><code>Ch 11</code>: 虛空無用之用 (Empty Space as Functional Core)</li>
-      <li><code>Ch 12</code>: 信號過載與感官降噪 (Signal Noise Filtering)</li>
-      <li><code>Ch 13</code>: 系統自我界定與寵辱不驚 (Self-Identity & Load Protection)</li>
-      <li><code>Ch 14</code>: 夷微希之視聽無形 (Unseen System Mechanics)</li>
-      <li><code>Ch 15</code>: 古之善為士者與動態沉澱 (Dynamic Stabilization)</li>
-      <li><code>Ch 16</code>: 致虛極守靜篤與歸根復命 (State Reset & Root Return)</li>
-      <li><code>Ch 17</code>: 太上不知有之與最高授權 (Silent Governance & High Delegation)</li>
-      <li><code>Ch 18</code>: 大大道廢與備援機制 (Backup Fallback System)</li>
-      <li><code>Ch 19</code>: 絕聖棄智與返璞歸真 (Simplification & Core Focus)</li>
-      <li><code>Ch 20</code>: 絕學無憂與系統獨行 (Independent Execution & Low Coupling)</li>
-    </ul>
-  </div>
+          <a href="PDF_4_DaoDeJing_031_040.pdf" download class="p-4 rounded-lg bg-gray-900 border border-amber-800/60 hover:border-amber-500 transition group flex flex-col justify-between">
+            <div>
+              <div class="text-xs text-amber-400 font-mono font-semibold">MODULE_04</div>
+              <div class="text-white font-bold mt-1 text-sm group-hover:text-amber-300">PDF 4: 終極封裝 (31-40)</div>
+            </div>
+            <div class="mt-4 text-xs text-gray-500 font-mono flex items-center justify-between">
+              <span>PDF_4_DaoDeJing.pdf</span>
+              <span class="text-amber-400 group-hover:translate-x-1 transition">↓</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
 
-  <!-- PDF 3 -->
-  <div class="pdf-card" style="border-left-color: var(--accent-purple);">
-    <h3 style="color: var(--accent-purple);">🔹 PDF 3: 深層邏輯與策略反轉 (Chapters 21 - 30)</h3>
-    <p><strong>主旨：</strong>深層變數維護、曲則全之反轉動力學、曲折轉化與控制策略。</p>
-    <ul>
-      <li><code>Ch 21</code>: 孔德之容與唯道是從 (Deep State Tracking)</li>
-      <li><code>Ch 22</code>: 曲則全與反向負回授 (Negative Feedback Dynamics)</li>
-      <li><code>Ch 23</code>: 希言自然與動能一致性 (Natural Flow Alignment)</li>
-      <li><code>Ch 24</code>: 企者不立與無效過度載入 (Anti-Overreaching Rule)</li>
-      <li><code>Ch 25</code>: 物壯則老與四大常數 (System Matrix Constants)</li>
-      <li><code>Ch 26</code>: 重為輕根靜為躁君 (Rooting & Gravity Control)</li>
-      <li><code>Ch 27</code>: 善行無轍跡與完美無縫執行 (Seamless Operation)</li>
-      <li><code>Ch 28</code>: 知其雄守其雌與模組通道 (Dual-Channel Routing)</li>
-      <li><code>Ch 29</code>: 為者敗之與非侵入式維護 (Non-Intrusive Management)</li>
-      <li><code>Ch 30</code>: 以道佐人主者不以兵強 (Minimizing Force Consumption)</li>
-    </ul>
-  </div>
+    <!-- Four IP Control Matrix System -->
+    <section id="ip-matrix" class="space-y-4 scroll-mt-20">
+      <div class="flex items-center gap-2">
+        <h3 class="text-xl font-bold text-white tracking-wide">🤖 四大 IP 系統控制矩陣 (Core IP Matrix & Guardrails)</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <div class="p-5 rounded-xl bg-gray-900/90 border border-cyan-800/50 glow-blue">
+          <div class="flex justify-between items-center mb-3">
+            <span class="px-2 py-0.5 rounded bg-cyan-950 text-cyan-400 text-xs font-mono border border-cyan-800">O_DINOCAT</span>
+            <span class="text-xs text-gray-500 font-mono">STRUCT_01</span>
+          </div>
+          <h4 class="text-white font-bold text-base mb-1">結構模組 (Structure)</h4>
+          <p class="text-gray-400 text-xs leading-relaxed">主導系統架構、ASCII 拓撲流向、頁面佈局與 11 頁標準劃分。</p>
+        </div>
 
-  <!-- PDF 4 -->
-  <div class="pdf-card" style="border-left-color: #f78166;">
-    <h3 style="color: #f78166;">🔹 PDF 4: 非暴力解耦與道經總結 (Chapters 31 - 40)</h3>
-    <p><strong>主旨：</strong>兵者不祥之強制解耦、知止邊界、微明對偶、無為自動化與《道經》終極封裝。</p>
-    <ul>
-      <li><code>Ch 31</code>: 夫兵者不祥之器 (Decoupling Force Instruments)</li>
-      <li><code>Ch 32</code>: 道常無名樸與知止 (Unnamed Simplicity & Bounds)</li>
-      <li><code>Ch 33</code>: 自知者明與勝己者強 (Internal Mastery & Diagnostics)</li>
-      <li><code>Ch 34</code>: 大道泛兮與無感擴展開發 (Omnipresent Flow & Serverless)</li>
-      <li><code>Ch 35</code>: 執大象天下往 (The Great Image & Inexhaustible Source)</li>
-      <li><code>Ch 36</code>: 微明對偶與柔弱勝剛強 (Micro-Perception & Soft Control)</li>
-      <li><code>Ch 37</code>: 道常無為而無不為 (Non-Action & Auto-Settling System)</li>
-      <li><code>Ch 38</code>: 上德不德與控制降級 (Hierarchy of Control Degradation)</li>
-      <li><code>Ch 39</code>: 昔之得一與基底支撐 (Systemic Oneness & Foundation)</li>
-      <li><code>Ch 40</code>: 反者道之動與有生於無 (Reversal Dynamics & Wu-To-You)</li>
-    </ul>
-  </div>
+        <div class="p-5 rounded-xl bg-gray-900/90 border border-emerald-800/50 glow-green">
+          <div class="flex justify-between items-center mb-3">
+            <span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 text-xs font-mono border border-emerald-800">A_MAGICAT</span>
+            <span class="text-xs text-gray-500 font-mono">CONTEXT_02</span>
+          </div>
+          <h4 class="text-white font-bold text-base mb-1">語境模組 (Context)</h4>
+          <p class="text-gray-400 text-xs leading-relaxed">主導深層哲理對齊、語意翻譯轉化與高維度概念對映。</p>
+        </div>
 
-  <h2>🤖 四大 IP 控制矩陣 (Four-IP Matrix)</h2>
-  <p>每個 PDF 章節中均包含以下四個專屬角色的控制任務分配：</p>
+        <div class="p-5 rounded-xl bg-gray-900/90 border border-purple-800/50 glow-purple">
+          <div class="flex justify-between items-center mb-3">
+            <span class="px-2 py-0.5 rounded bg-purple-950 text-purple-400 text-xs font-mono border border-purple-800">B_DEVILCAT</span>
+            <span class="text-xs text-gray-500 font-mono">CONSTRAINT_03</span>
+          </div>
+          <h4 class="text-white font-bold text-base mb-1">約束模組 (Constraints)</h4>
+          <p class="text-gray-400 text-xs leading-relaxed">嚴格限制 64 字元寬度、防範 ASCII 電路折行與 PDF 跨頁溢出。</p>
+        </div>
 
-  <table class="ip-table">
-    <thead>
-      <tr>
-        <th>IP 角色名稱</th>
-        <th>職責定義</th>
-        <th>模組功能</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>O_DINOCAT</code></td>
-        <td>結構模組 (Structure)</td>
-        <td>負責拓撲流向、頁面邊界與骨架佈局</td>
-      </tr>
-      <tr>
-        <td><code>A_MAGICAT</code></td>
-        <td>語境模組 (Context)</td>
-        <td>負責深層哲理對齊、語意解析與動態翻譯</td>
-      </tr>
-      <tr>
-        <td><code>B_DEVILCAT</code></td>
-        <td>約束模組 (Constraints)</td>
-        <td>防範 ASCII 拓撲折行、字元寬度超標與分頁溢出</td>
-      </tr>
-      <tr>
-        <td><code>AB_LIQUIDCAT</code></td>
-        <td>轉化模組 (Transformation)</td>
-        <td>負責跨維度轉譯與 PDF 結構之最終現實檢驗</td>
-      </tr>
-    </tbody>
-  </table>
+        <div class="p-5 rounded-xl bg-gray-900/90 border border-amber-800/50 glow-amber">
+          <div class="flex justify-between items-center mb-3">
+            <span class="px-2 py-0.5 rounded bg-amber-950 text-amber-400 text-xs font-mono border border-amber-800">AB_LIQUIDCAT</span>
+            <span class="text-xs text-gray-500 font-mono">TRANSFORM_04</span>
+          </div>
+          <h4 class="text-white font-bold text-base mb-1">轉化模組 (Transformation)</h4>
+          <p class="text-gray-400 text-xs leading-relaxed">負責跨維度轉譯校準，執行 Reality Assertion Test 與編譯驗證。</p>
+        </div>
 
-  <h2>🛠️ Git 指令參考</h2>
-  <p>部署至 GitHub / Git 倉庫範例：</p>
-  <pre><code>git add index.html
-git commit -m "docs: 新增 index.html 專案目錄頁面"
-git push origin main</code></pre>
+      </div>
+    </section>
 
-  <div class="footer">
-    AOE WORLD CIRCUIT &copy; Dao De Jing Topology Circuit Documentation
-  </div>
-</div>
+    <!-- SECTION 1: PDF 1 (Ch 01 - 10) -->
+    <section id="pdf1" class="space-y-6 pt-6 scroll-mt-20">
+      <div class="p-4 rounded-xl bg-sky-950/40 border border-sky-800/80 flex flex-col md:flex-row justify-between md:items-center gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 text-sky-400 text-xs font-mono mb-1">
+            <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+            <span>MODULE 01: CHAPTERS 01 - 10</span>
+          </div>
+          <h2 class="text-2xl font-bold text-white">PDF 1: 系統基礎與拓撲啟動 (System Boundaries & Foundations)</h2>
+        </div>
+        <a href="PDF_1_DaoDeJing_001_010.pdf" download class="px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-medium text-xs font-mono transition self-start md:self-auto">
+          Download PDF_1 (01-10).pdf
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6">
+
+        <!-- Ch 01 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-sky-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-sky-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-sky-950 border border-sky-800">CH 01</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">系統界定與觀察介面 (System Boundaries & Interface)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Boundary] [Observation] [Dual-State]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">無名天地之始（靜態宣告）；有名萬物之母（動態實例化）。常無欲以觀其妙；常有欲以觀其left。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-sky-300 border border-gray-800/80 overflow-x-auto">[ DAO: UNNAMED SYSTEM ABSOLUTE ]
+       │
+       ├─► ( NAMED STATE: INSTANTIATION )
+       │        ├─► [ NON-DESIRE FILTER ] ──► [ OBSERVE SUBTLETY (妙) ]
+       │        └─► [ DESIRE FILTER ]     ──► [ OBSERVE BOUNDS (left) ]
+       │
+       └─► [ DUAL EMERGENCE GATE (同出異名) ]
+                └─► [ DEEP MYSTERY CORE (玄之又玄, 眾妙之門) ]</pre>
+        </article>
+
+        <!-- Ch 02 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-sky-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-sky-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-sky-950 border border-sky-800">CH 02</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">相生對偶性與無為自動化 (Duality & Automation)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Duality] [Feedback] [Wu-Wei]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">有無相生，難易相成，長短相形，高下相傾。聖人處無為之事，行不言之教。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-sky-300 border border-gray-800/80 overflow-x-auto">[ DUALITY RECOGNITION (美/惡, 善/不善) ]
+       │
+       ├─► [ CO-CREATION LOOP ]
+       │      ├─► 有 ◄──► 無  │  難 ◄──► 易
+       │      └─► 長 ◄──► 短  │  高 ◄──► 下
+       │
+       └─► [ SYSTEM CONTROLLER: WU-WEI (無為) ]
+              ├─► [ SILENT TEACHING BUS (不言之教) ]
+              └─► [ AUTONOMOUS PROCESS (作而不辭, 生而不有) ]</pre>
+        </article>
+
+        <!-- Ch 03 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-sky-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-sky-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-sky-950 border border-sky-800">CH 03</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">狀態重置與系統平衡 (State Reset & Equilibrium)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Reset] [Load-Balance] [Quietude]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">不尚賢，使民不爭。虛其心，實其腹；弱其志，強其骨。為無為，則無不治。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-sky-300 border border-gray-800/80 overflow-x-auto">[ INPUT: SYSTEM OVERLOAD / COMPETITION ]
+       │
+       ▼
+[ NOISE DAMPENER: 不尚賢 / 不貴難得之貨 ]
+       │
+       ▼
+[ STATE REBALANCER ]
+       ├─► EMPTY MIND (虛其心) ──► FILL BELLY (實其腹)
+       └─► WEAKEN WILL (弱其志) ──► STRENGTHEN BONE (強其骨)
+       │
+       ▼
+[ STABLE ZERO-LOAD STATE (為無為 ──► 無不治) ]</pre>
+        </article>
+
+        <!-- Ch 04 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-sky-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-sky-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-sky-950 border border-sky-800">CH 04</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">無窮深層驅動 (Inexhaustible Core Drive)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Infinite-Buffer] [Harmonization]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">道沖，而用之或不盈。挫其銳，解其紛，和其光，同其塵。湛兮，似或存。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-sky-300 border border-gray-800/80 overflow-x-auto">[ DAO BUFFER CAPACITY: INFINITE VOID ]
+       │
+       ├─► [ DAMPEN SHARPNESS (挫其銳) ]
+       ├─► [ UNTANGLE DISCORD (解其紛) ]
+       ├─► [ HARMONIZE LIGHT  (和其光) ]
+       └─► [ MERGE WITH DUST  (同其塵) ]
+       │
+       ▼
+[ DEEP QUIET STATE: DEEP YET PERPETUAL (湛兮似或存) ]</pre>
+        </article>
+
+        <!-- Ch 05 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-sky-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-sky-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-sky-950 border border-sky-800">CH 05</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">中空無偏與動態穩定 (Empty Space & Dynamic Stability)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Bellows-Mechanism] [Neutrality]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">天地不仁，以萬物為芻狗。天地之間，其猶橐龠乎？虛而不屈，動而愈出。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-sky-300 border border-gray-800/80 overflow-x-auto">[ IMPARTIAL CONTROLLER: 天地不仁 / 芻狗 GATE ]
+       │
+       ▼
+[ BELLOWS ENGINE (橐龠 結構) ]
+       ├─► EMPTY CHAMBER (虛而不屈)
+       └─► EXHAUST ON MOTION (動而愈出)
+       │
+       ▼
+[ CENTER-HOLDING REGULATOR (多言數窮 ──► 守中) ]</pre>
+        </article>
+
+        <!-- Ch 06 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-sky-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-sky-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-sky-950 border border-sky-800">CH 06</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">谷神不死與永續調用 (Continuous System Availability)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Valley-Spirit] [Root-Gate] [Infinite-Loop]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">谷神不死，是謂玄牝。玄牝之門，是謂天地根。綿綿若存，用之不勤。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-sky-300 border border-gray-800/80 overflow-x-auto">[ VALLEY SPIRIT (谷神: IMMORTAL CORE) ]
+       │
+       ▼
+[ FEMALE ROOT GATE (玄牝之門 = ROOT OF EXISTENCE) ]
+       │
+       ▼
+[ CONTINUOUS LOW-POWER FLOW (綿綿若存) ]
+       │
+       ▼
+[ ZERO-FATIGUE EXECUTION BUS (用之不勤) ]</pre>
+        </article>
+
+        <!-- Ch 07 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-sky-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-sky-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-sky-950 border border-sky-800">CH 07</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">無私延展與長久運行 (Selfless Expansion & Longevity)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Non-Self] [Longevity] [Preservation]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">天長地久。天地所以能長且久者，以其不自生，故能長生。後其身而身先，外其身而身存。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-sky-300 border border-gray-800/80 overflow-x-auto">[ SYSTEM LONGEVITY CONDITION: NON-SELF-GENERATION ]
+       │
+       ├─► STEP BACK (後其身) ──► POSITIONED FRONT (身先)
+       └─► DETACH SELF (外其身) ──► SYSTEM PRESERVED (身存)
+       │
+       ▼
+[ SELFLESS OPTIMIZATION ──► ACHIEVE SELF-FULFILLMENT ]</pre>
+        </article>
+
+        <!-- Ch 08 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-sky-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-sky-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-sky-950 border border-sky-800">CH 08</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">水樣流動與最適應 (Fluid Adaptation & Optimal Execution)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Water-Topology] [Low-Resistance]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">上善若水。水善利萬物而不爭，處眾人之所惡，故幾於道。夫唯不爭，故無尤。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-sky-300 border border-gray-800/80 overflow-x-auto">[ HIGHEST EXCELLENCE: WATER TOPOLOGY (上善若水) ]
+       │
+       ├─► BENEFIT ALL (利萬物) ──► NON-CONTENDING (不爭)
+       └─► OCCUPY LOWEST STATE (處眾人之所惡)
+       │
+       ▼
+[ PERFECT ALIGNMENT WITH DAO (幾於道 ──► 無尤) ]</pre>
+        </article>
+
+        <!-- Ch 09 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-sky-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-sky-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-sky-950 border border-sky-800">CH 09</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">盈滿限制與適時退場 (Overflow Constraint & Exit Timing)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Overflow-Limit] [Exit-Strategy]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">持而盈之，不如其已。揣而銳之，不可長保。金玉滿堂，莫之能守。功遂身退，天之道。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-sky-300 border border-gray-800/80 overflow-x-auto">[ OVERFLOW DETECTOR (持而盈之 / 揣而銳之) ]
+       │
+       ▼
+[ CRITICAL THRESHOLD REACHED ]
+       │
+       ▼
+[ EXHAUSTION / FAILURE RISK IF CONTINUED ]
+       │
+       ▼
+[ OPTIMAL EXIT PROTOCOL: 功遂身退 (WAY OF HEAVEN) ]</pre>
+        </article>
+
+        <!-- Ch 10 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-sky-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-sky-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-sky-950 border border-sky-800">CH 10</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">載營魄抱一與靈魂校準 (Soul Alignment & Non-Interference)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Unity] [Purity] [Non-Interference]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">載營魄抱一，能無離乎？專氣致柔，能如嬰兒乎？滌除玄覽，能無疵乎？生之蓄之，生而不有。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-sky-300 border border-gray-800/80 overflow-x-auto">[ BODY-SOUL UNITY (載營魄抱一) ]
+       │
+       ├─► SOFTEN ENERGY TO INFANT (專氣致柔)
+       ├─► PURIFY INTROSPECTION    (滌除玄覽)
+       └─► GOVERN WITHOUT FORCE    (愛民治國無為)
+       │
+       ▼
+[ MYSTERIOUS VIRTUE: 生而不有, 為而不恃, 長而不宰 (玄德) ]</pre>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: PDF 2 (Ch 11 - 20) -->
+    <section id="pdf2" class="space-y-6 pt-6 scroll-mt-20">
+      <div class="p-4 rounded-xl bg-emerald-950/40 border border-emerald-800/80 flex flex-col md:flex-row justify-between md:items-center gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 text-emerald-400 text-xs font-mono mb-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span>MODULE 02: CHAPTERS 11 - 20</span>
+          </div>
+          <h2 class="text-2xl font-bold text-white">PDF 2: 空間容積與狀態轉移 (Volume, Noise Reduction & State Shift)</h2>
+        </div>
+        <a href="PDF_2_DaoDeJing_011_020.pdf" download class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs font-mono transition self-start md:self-auto">
+          Download PDF_2 (11-20).pdf
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6">
+
+        <!-- Ch 11 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-emerald-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-emerald-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-950 border border-emerald-800">CH 11</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">虛空無用之用 (Empty Space as Functional Core)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Void-Capacity] [Utility-Architecture]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">三十輻共一轂，當其無，有車之用。埏埴以為器，當其無，有器之用。鑿戶牖以為室，當其無，有室之用。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-emerald-300 border border-gray-800/80 overflow-x-auto">[ HARDWARE CONTAINER (有之以為利) ]
+       ├─► 30 SPOKES / VESSEL / ROOM WALLS
+       │
+       ▼
+[ INTERACTION CORE: VOID SPACE (無之以為用) ]
+       ├─► HUB VOID  ──► WHEEL UTILITY
+       ├─► CLAY VOID ──► VESSEL UTILITY
+       └─► DOOR VOID ──► ROOM UTILITY</pre>
+        </article>
+
+        <!-- Ch 12 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-emerald-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-emerald-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-950 border border-emerald-800">CH 12</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">信號過載與感官降噪 (Signal Noise Filtering)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Noise-Reduction] [Sensory-Filter]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">五色令人目盲，五音令人耳聾，五味令人口爽，馳騁畋獵令人心發狂。是以聖人為腹不為目。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-emerald-300 border border-gray-800/80 overflow-x-auto">[ SENSORY OVERLOAD INPUT (五色/五音/五味/馳騁) ]
+       │
+       ▼
+[ NOISE DAMPENER FILTER ]
+       ├─► REJECT EYE DISTRACTIONS (為目 ──► BLOCK)
+       └─► PRESERVE CORE SUSTENANCE (為腹 ──► ACCEPT)
+       │
+       ▼
+[ BALANCED SENSORY EQUILIBRIUM (去彼取此) ]</pre>
+        </article>
+
+        <!-- Ch 13 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-emerald-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-emerald-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-950 border border-emerald-800">CH 13</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">系統自我界定與寵辱不驚 (Self-Identity & Load Protection)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Self-Detachment] [System-Trust]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">寵辱若驚，貴大患若身。何謂寵辱若驚？寵為下，得之若驚，失之若驚。愛以身為天下，若可託天下。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-emerald-300 border border-gray-800/80 overflow-x-auto">[ EXTERNAL FEEDBACK: FAVOR / DISFAVOR (寵/辱) ]
+       │
+       ▼
+[ EGO ISOLATION GATE ]
+       ├─► IF ATTACHED TO BODY ──► HIGH VULNERABILITY
+       └─► IF DETACHED FROM EGO ──► ZERO SURGE DAMAGE
+       │
+       ▼
+[ UNIVERSAL TRUSTEE MODE (愛以身為天下 ──► 寄天下) ]</pre>
+        </article>
+
+        <!-- Ch 14 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-emerald-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-emerald-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-950 border border-emerald-800">CH 14</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">夷微希之視聽無形 (Unseen System Mechanics)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Formless] [Yi-Wei-Xi] [Core-Thread]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">視之不見名曰夷，聽之不聞名曰希，搏之不得名曰微。三者不可致詰，故混而為一。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-emerald-300 border border-gray-800/80 overflow-x-auto">[ SENSOR READOUTS ]
+       ├─► UNSEEN   ──► YI (夷)
+       ├─► UNHEARD  ──► XI (希)
+       └─► UNTOUCHED ──► WEI (微)
+       │
+       ▼
+[ UNIFIED BLEND GATE (混而為一 / 無狀之狀) ]
+       │
+       ▼
+[ THREAD OF ANCIENT DAO (執古之道 ──► 御今之有) ]</pre>
+        </article>
+
+        <!-- Ch 15 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-emerald-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-emerald-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-950 border border-emerald-800">CH 15</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">古之善為士者與動態沉澱 (Dynamic Stabilization)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Sedimentation] [Quietude] [Rejuvenation]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">孰能濁以靜之徐清？孰能安以動之徐生？保此道者不欲盈。夫唯不盈，故能蔽不新成。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-emerald-300 border border-gray-800/80 overflow-x-auto">[ TURBULENT STATE (濁) ]
+       │
+       ▼ [ SETTLE THROUGH QUIETUDE (靜之徐清) ]
+[ CLEAR / STABLE STATE (清) ]
+       │
+       ▼ [ AWAKEN THROUGH GRADUAL MOTION (動之徐生) ]
+[ RENEWED SYSTEM (蔽不新成 / 不欲盈) ]</pre>
+        </article>
+
+        <!-- Ch 16 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-emerald-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-emerald-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-950 border border-emerald-800">CH 16</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">致虛極守靜篤與歸根復命 (State Reset & Root Return)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Root-Return] [Eternal-Law] [Illumination]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">致虛極，守靜篤。萬物並作，吾以觀復。夫物芸芸，各復歸其根。歸根曰靜，靜曰復命。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-emerald-300 border border-gray-800/80 overflow-x-auto">[ MAXIMUM VOID & STILLNESS (致虛極, 守靜篤) ]
+       │
+       ▼
+[ OBSERVE MULTITUDE RECURSION (萬物並作 ──► 吾以觀復) ]
+       │
+       ▼
+[ RETURN TO ROOT (歸根曰靜 ──► 復命 ──► 常 ──► 明) ]
+       │
+       ▼
+[ IMMUTABLE SYSTEM ENDURANCE (沒身不殆) ]</pre>
+        </article>
+
+        <!-- Ch 17 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-emerald-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-emerald-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-950 border border-emerald-800">CH 17</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">太上不知有之與最高授權 (Silent Governance & High Delegation)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Silent-Governance] [Naturalness]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">太上，下知有之；其次，親而譽之；其次，畏之；其次，侮之。功成事遂，百姓皆謂我自然。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-emerald-300 border border-gray-800/80 overflow-x-auto">[ GOVERNANCE HIERARCHY ]
+       ├─► LEVEL 1: HIGHEST  ──► UNNOTICED (太上, 下知有之)
+       ├─► LEVEL 2: PRAISED   ──► PRAISED & LOVED (親而譽之)
+       ├─► LEVEL 3: FEARED    ──► FEARED (畏之)
+       └─► LEVEL 4: DESPOILED ──► DESPISED (侮之)
+       │
+       ▼
+[ PERFECT AUTONOMY: 功成事遂 ──► 百姓皆謂我自然 ]</pre>
+        </article>
+
+        <!-- Ch 18 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-emerald-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-emerald-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-950 border border-emerald-800">CH 18</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">大大道廢與備援機制 (Backup Fallback System)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [System-Degradation] [Fallback]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">大道廢，有仁義；智慧出，有大偽；六親不和，有孝慈；國家昏亂，有忠臣。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-emerald-300 border border-gray-800/80 overflow-x-auto">[ PRIMARY SYSTEM: GREAT DAO (大道) ]
+       │
+       ▼ [ SYSTEM DEGRADATION / FAILURE ]
+[ SECONDARY FALLBACKS ]
+       ├─► BENEVOLENCE & RIGHTEOUSNESS (仁義)
+       ├─► CLEVERNESS & HYPOCRISY      (智慧/大偽)
+       └─► LOYALTY & FILIAL DUTY      (孝慈/忠臣) ]</pre>
+        </article>
+
+        <!-- Ch 19 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-emerald-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-emerald-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-950 border border-emerald-800">CH 19</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">絕聖棄智與返璞歸真 (Simplification & Core Focus)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Pruning] [Simplicity] [Uncarved-Block]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">絕聖棄智，民利百倍；絕仁棄義，民復孝慈；絕巧棄利，盜賊無有。見素抱樸，少私寡欲。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-emerald-300 border border-gray-800/80 overflow-x-auto">[ FEATURE OVERLOAD PRUNING ]
+       ├─► CUT SAGE & CLEVERNESS ──► 100x PROFIT (民利百倍)
+       ├─► CUT BENEVOLENCE & DUTY ──► NATURAL LOVE (復孝慈)
+       └─► CUT CUNNING & PROFIT  ──► NO THIEVES   (盜賊無有)
+       │
+       ▼
+[ CORE EMBEDDED PRINCIPLE: 見素抱樸, 少私寡欲 ]</pre>
+        </article>
+
+        <!-- Ch 20 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-emerald-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-emerald-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-950 border border-emerald-800">CH 20</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">絕學無憂與系統獨行 (Independent Execution & Low Coupling)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Low-Coupling] [Independence] [Nourishment]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">絕學無憂。唯之與阿，相去幾何？眾人熙熙，如享太牢。我獨泊兮，其未兆；我獨異於人，而貴食母。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-emerald-300 border border-gray-800/80 overflow-x-auto">[ COMMON SYSTEM MODES (眾人熙熙 / 貪求無度) ]
+       │
+       ▼
+[ DECOUPLED INDEPENDENT NODE ]
+       ├─► DRIFTING LIKE OCEAN  (澹兮其若海)
+       ├─► UNBOUNDED RUNTIME    (飄兮若無所止)
+       └─► NOURISHED BY SOURCE  (貴食母) ]</pre>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: PDF 3 (Ch 21 - 30) -->
+    <section id="pdf3" class="space-y-6 pt-6 scroll-mt-20">
+      <div class="p-4 rounded-xl bg-purple-950/40 border border-purple-800/80 flex flex-col md:flex-row justify-between md:items-center gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 text-purple-400 text-xs font-mono mb-1">
+            <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+            <span>MODULE 03: CHAPTERS 21 - 30</span>
+          </div>
+          <h2 class="text-2xl font-bold text-white">PDF 3: 深層邏輯與策略反轉 (Reversal Dynamics & Matrix Control)</h2>
+        </div>
+        <a href="PDF_3_DaoDeJing_021_030.pdf" download class="px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-medium text-xs font-mono transition self-start md:self-auto">
+          Download PDF_3 (21-30).pdf
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6">
+
+        <!-- Ch 21 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-purple-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-purple-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-purple-950 border border-purple-800">CH 21</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">孔德之容與唯道是從 (Deep State Tracking)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Deep-State] [Elusive-Core] [Essence]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">孔德之容，唯道是從。道之為物，唯恍唯惚。惚兮恍兮，其中有象；恍兮惚兮，其中有物。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-purple-300 border border-gray-800/80 overflow-x-auto">[ VIRTUE CAPACITY: ALIGNED SOLELY WITH DAO ]
+       │
+       ▼
+[ ELUSIVE CORE ENGINE (唯恍唯惚) ]
+       ├─► INDISTINCT YET FORM PRESENT (其中有象)
+       ├─► OBSCURE YET SUBSTANCE REAL  (其中有物)
+       └─► DEEP ESSENCE WITH TRUTH     (其中有精 / 其中有信)
+       │
+       ▼
+[ ETERNAL ORIGIN TRACER (自古及今, 其名不去) ]</pre>
+        </article>
+
+        <!-- Ch 22 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-purple-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-purple-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-purple-950 border border-purple-800">CH 22</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">曲則全與反向負回授 (Negative Feedback Dynamics)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Yielding-Integrity] [Feedback-Loop]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">曲則全，枉則直，窪則盈，敝則新，少則得，多則惑。是以聖人抱一為天下式。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-purple-300 border border-gray-800/80 overflow-x-auto">[ REVERSAL TRANSFORM MATRIX ]
+       ├─► YIELD (曲) ──► INTEGRITY (全)
+       ├─► BEND  (枉) ──► STRAIGHT  (直)
+       ├─► HOLLOW(窪) ──► FILLED    (盈)
+       └─► FEW   (少) ──► GAIN      (得)
+       │
+       ▼
+[ HOLD UNITY AS PATTERN (抱一為天下式 ──► 夫唯不爭故天下莫能與之爭) ]</pre>
+        </article>
+
+        <!-- Ch 23 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-purple-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-purple-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-purple-950 border border-purple-800">CH 23</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">希言自然與動能一致性 (Natural Flow Alignment)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Natural-Flow] [Alignment]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">希言自然。故飄風不終朝，驟雨不終日。同於道者，道亦樂得之；同於德者，德亦樂得之。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-purple-300 border border-gray-800/80 overflow-x-auto">[ SHORT-LIVED HIGH BURSTS (飄風不終朝 / 驟雨不終日) ]
+       │
+       ▼
+[ NATURAL STEADY STATE (希言自然) ]
+       ├─► ALIGN WITH DAO    ──► DAO WELCOMES (同於道)
+       ├─► ALIGN WITH VIRTUE ──► VIRTUE WELCOMES (同於德)
+       └─► ALIGN WITH LOSS   ──► LOSS WELCOMES (同於失) ]</pre>
+        </article>
+
+        <!-- Ch 24 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-purple-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-purple-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-purple-950 border border-purple-800">CH 24</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">企者不立與無效過度載入 (Anti-Overreaching Rule)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Anti-Overreach] [Excess-Warning]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">企者不立，跨者不行，自見者不明，自是者不彰，自伐者無功，自矜者不長。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-purple-300 border border-gray-800/80 overflow-x-auto">[ INSTABILITY DETECTOR ]
+       ├─► TIPTOE (企者) ──► UNSTABLE (不立)
+       ├─► STRIDE (跨者) ──► CANNOT WALK (不行)
+       ├─► SELF-DISPLAY  ──► UNENLIGHTENED (自見者不明)
+       └─► SELF-BOASTING ──► NO MERIT (自伐者無功)
+       │
+       ▼
+[ REJECTED AS EXCESS CARGO (餘食贅行 ──► 有道者不處) ]</pre>
+        </article>
+
+        <!-- Ch 25 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-purple-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-purple-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-purple-950 border border-purple-800">CH 25</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">物壯則老與四大常數 (System Matrix Constants)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Four-Greats] [Cosmic-Laws]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">有物混成，先天地生。寂兮寥兮，獨立不改，周行而不殆，可以為天地母。吾不知其名，字之曰道。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-purple-300 border border-gray-800/80 overflow-x-auto">[ COSMIC CONSTANT: DAO (寂兮寥兮, 獨立不改, 周行不殆) ]
+       │
+       ▼
+[ FOUR GREATS MATRIX (域中有四大) ]
+       DAO (道) ──► HEAVEN (天) ──► EARTH (地) ──► HUMAN (人/王)
+       │
+       ▼
+[ RECURSIVE LAW: 人法地, 地法天, 天法道, 道法自然 ]</pre>
+        </article>
+
+        <!-- Ch 26 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-purple-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-purple-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-purple-950 border border-purple-800">CH 26</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">重為輕根靜為躁君 (Rooting & Gravity Control)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Gravity-Root] [Quiet-Mastery]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">重為輕根，靜為躁君。是以聖人終日行不離輜重。奈何萬乘之主，而以身輕天下？</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-purple-300 border border-gray-800/80 overflow-x-auto">[ GRAVITY CORE ]
+       ├─► HEAVY IS ROOT OF LIGHT (重為輕根)
+       └─► STILLNESS GOVERNS RASHNESS (靜為躁君)
+       │
+       ▼
+[ HIGH-STABILITY RUNTIME (終日行不離輜重) ]
+       │
+       ▼
+[ PREVENT LOSS OF ROOT (輕則失根, 躁則失君) ]</pre>
+        </article>
+
+        <!-- Ch 27 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-purple-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-purple-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-purple-950 border border-purple-800">CH 27</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">善行無轍跡與完美無縫執行 (Seamless Operation)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Seamless-Execution] [Trace-Free]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">善行無轍跡，善言無瑕讁；善數不用籌策；善閉無關楗而不可開，善結無繩約而不可解。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-purple-300 border border-gray-800/80 overflow-x-auto">[ SEAMLESS OPERATOR ENGINE ]
+       ├─► PERFECT TRAVEL ──► NO TRACES (無轍跡)
+       ├─► PERFECT SPEECH ──► NO FLAW   (無瑕讁)
+       ├─► PERFECT LOCK   ──► NO BOLT NEEDED (無關楗不可開)
+       └─► PERFECT BIND   ──► NO ROPE NEEDED (無繩約不可解)
+       │
+       ▼
+[ UNIVERSAL RESOURCE SAVER: 善救人故無棄人, 襲明 ]</pre>
+        </article>
+
+        <!-- Ch 28 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-purple-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-purple-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-purple-950 border border-purple-800">CH 28</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">知其雄守其雌與模組通道 (Dual-Channel Routing)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Dual-Channel] [Valley-Channel] [Uncarved-Block]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">知其雄，守其雌，為天下谿。知其白，守其黑，為天下式。知其榮，守其辱，為天下谷。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-purple-300 border border-gray-800/80 overflow-x-auto">[ DUAL CHANNEL ROUTER ]
+       ├─► KNOW MALE / HOLD FEMALE ──► RIVULET (為天下谿)
+       ├─► KNOW WHITE / HOLD BLACK  ──► PATTERN (為天下式)
+       └─► KNOW GLORY / HOLD SHAME  ──► VALLEY  (為天下谷)
+       │
+       ▼
+[ UNCARVED BLOCK REGULATION (樸散則為器 ──► 大制不割) ]</pre>
+        </article>
+
+        <!-- Ch 29 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-purple-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-purple-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-purple-950 border border-purple-800">CH 29</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">為者敗之與非侵入式維護 (Non-Intrusive Management)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Sacred-Vessel] [Non-Intrusive]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">將欲取天下而為之，吾見其不得已。天下神器，不可為也，為者敗之，執者失之。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-purple-300 border border-gray-800/80 overflow-x-auto">[ SACRED SYSTEM VESSEL (天下神器) ]
+       │
+       ├─► INTRUSIVE FORCE (為者) ──► FAILURE (敗之)
+       └─► RIGID HOLDING   (執者) ──► LOSS    (失之)
+       │
+       ▼
+[ DYNAMIC BALANCE REGULATOR ]
+       ├─► AVOID EXCESS     (去甚)
+       ├─► AVOID EXTRAVAGANCE(去奢)
+       └─► AVOID ARROGANCE  (去泰) ]</pre>
+        </article>
+
+        <!-- Ch 30 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-purple-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-purple-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-purple-950 border border-purple-800">CH 30</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">以道佐人主者不以兵強 (Minimizing Force Consumption)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Min-Force] [Rebound-Control]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">以道佐人主者，不以兵強天下。其事好還。師之所處，荊棘生焉。大軍之後，必有凶年。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-purple-300 border border-gray-800/80 overflow-x-auto">[ FORCE EXERTION INPUT (以兵強天下) ]
+       │
+       ▼
+[ NEGATIVE REBOUND EFFECT (其事好還 ──► 荊棘生 / 必有凶年) ]
+       │
+       ▼
+[ MINIMAL ACTION EXECUTION ]
+       ├─► ACHIEVE RESULT & STOP (果而不敢以取強)
+       └─► PREVENT OVER-GROWTH  (物壯則老 ──► 不道早已) ]</pre>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SECTION 4: PDF 4 (Ch 31 - 40) -->
+    <section id="pdf4" class="space-y-6 pt-6 scroll-mt-20">
+      <div class="p-4 rounded-xl bg-amber-950/40 border border-amber-800/80 flex flex-col md:flex-row justify-between md:items-center gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 text-amber-400 text-xs font-mono mb-1">
+            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+            <span>MODULE 04: CHAPTERS 31 - 40</span>
+          </div>
+          <h2 class="text-2xl font-bold text-white">PDF 4: 非暴力解耦與道經總結 (Decoupling & Master Enclosure)</h2>
+        </div>
+        <a href="PDF_4_DaoDeJing_031_040.pdf" download class="px-4 py-2 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-medium text-xs font-mono transition self-start md:self-auto">
+          Download PDF_4 (31-40).pdf
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6">
+
+        <!-- Ch 31 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-amber-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-amber-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-amber-950 border border-amber-800">CH 31</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">夫兵者不祥之器 (Decoupling Force Instruments)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Decoupling] [Emergency-Use]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">夫兵者，不祥之器，物或惡之，故有道者不處。不得已而用之，恬淡為上。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-amber-300 border border-gray-800/80 overflow-x-auto">[ FORCE INSTRUMENTS: UNNOTICED EVIL (不祥之器) ]
+       │
+       ▼
+[ EMERGENCY-ONLY USE GATE (不得已而用之) ]
+       │
+       ├─► CALM DETACHMENT PROTOCOL (恬淡為上)
+       └─► NO TRIUMPH IN FORCE      (勝而不美)
+       │
+       ▼
+[ PEACEFUL SYSTEM SETTLEMENT ]</pre>
+        </article>
+
+        <!-- Ch 32 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-amber-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-amber-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-amber-950 border border-amber-800">CH 32</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">道常無名樸與知止 (Unnamed Simplicity & Bounds)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Unnamed-Block] [Knowing-Bounds]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">道常無名樸。雖小，天下莫能臣。始制有名，名亦既有，夫亦將知止，知止所以不殆。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-amber-300 border border-gray-800/80 overflow-x-auto">[ UNNAMED UNCARVED CORE (道常無名樸) ]
+       │
+       ▼
+[ NAMING / INSTANTIATION (始制有名) ]
+       │
+       ▼
+[ BOUNDARY CONTROLLER: KNOWING WHEN TO STOP (知止) ]
+       │
+       ▼
+[ IMMUNE FROM SYSTEM DANGER (知止所以不殆) ]</pre>
+        </article>
+
+        <!-- Ch 33 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-amber-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-amber-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-amber-950 border border-amber-800">CH 33</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">自知者明與勝己者強 (Internal Mastery & Diagnostics)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Self-Diagnostic] [True-Power]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">知人者智，自知者明。勝人者有力，勝己者強。知足者富，強行者有志。死而不亡者壽。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-amber-300 border border-gray-800/80 overflow-x-auto">[ SYSTEM METRICS COMPARISON ]
+       ├─► KNOW OTHERS (知人: 智) ──► KNOW SELF (自知: 明)
+       ├─► OVERCOME OTHERS (勝人: 有力) ──► OVERCOME SELF (勝己: 強)
+       ├─► CONTENTMENT     (知足: 富)
+       └─► PERSISTENCE       (強行: 有志)
+       │
+       ▼
+[ IMMORTAL SYSTEM PRESENCE (死而不亡者壽) ]</pre>
+        </article>
+
+        <!-- Ch 34 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-amber-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-amber-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-amber-950 border border-amber-800">CH 34</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">大道泛兮與無感擴展開發 (Omnipresent Flow & Serverless)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Omnipresence] [Unclaimed-Greatness]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">大道泛兮，其可左右。萬物恃之以生而不辭，功成而不有。衣養萬物而不為主，可名於小。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-amber-300 border border-gray-800/80 overflow-x-auto">[ OMNIPRESENT FLOW (大道泛兮, 其可左右) ]
+       │
+       ├─► NOURISH ALL WITHOUT CLAIM (萬物恃之生而不辭)
+       ├─► ACCOMPLISH WITHOUT OWNERSHIP (功成而不有)
+       └─► NO MASTER CONTROLLER REQUIRED (不為主 ──► 可名於大)
+       │
+       ▼
+[ TRUE SYSTEM GREATNESS VIA NON-OWNERSHIP ]</pre>
+        </article>
+
+        <!-- Ch 35 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-amber-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-amber-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-amber-950 border border-amber-800">CH 35</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">執大象天下往 (The Great Image & Inexhaustible Source)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Great-Image] [Inexhaustible-Supply]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">執大象，天下往。往而不害，安平泰。樂與餌，過客止。道之出口，淡乎其無味，用之不可既。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-amber-300 border border-gray-800/80 overflow-x-auto">[ HOLD GREAT IMAGE: SYSTEM CORE (執大象, 天下往) ]
+       │
+       ▼
+[ PEACE & HARMONY STATE (安平泰) ]
+       │
+       ├─► MUSIC & FOOD (樂與餌 ──► TEMPORARY ATTRACTION)
+       └─► DAO FLOW     (淡乎無味 ──► 用之不可既: INFINITE) ]</pre>
+        </article>
+
+        <!-- Ch 36 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-amber-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-amber-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-amber-950 border border-amber-800">CH 36</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">微明對偶與柔弱勝剛強 (Micro-Perception & Soft Control)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Micro-Perception] [Soft-Over-Hard]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">將欲歙之，必固張之；將欲弱之，必固強之；將欲廢之，必固興之。柔弱勝剛強。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-amber-300 border border-gray-800/80 overflow-x-auto">[ SUBTLE ILLUMINATION (微明) ]
+       ├─► EXPAND BEFORE CONTRACT (將欲歙之, 必固張之)
+       ├─► STRENGTHEN BEFORE WEAKEN(將欲弱之, 必固強之)
+       └─► RAISE BEFORE ABOLISH    (將欲廢之, 必固興之)
+       │
+       ▼
+[ PRINCIPLE: SOFT OVERCOMES HARD (柔弱勝剛強) ]</pre>
+        </article>
+
+        <!-- Ch 37 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-amber-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-amber-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-amber-950 border border-amber-800">CH 37</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">道常無為而無不為 (Non-Action & Auto-Settling System)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Auto-Settling] [Self-Tranquil]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">道常無為而無不為。侯王若能守之，萬物將自化。化而欲作，吾將鎮之以無名之樸。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-amber-300 border border-gray-800/80 overflow-x-auto">[ CORE PROTOCOL: DAO NEVER ACTS YET ALL IS DONE ]
+       │
+       ▼
+[ AUTONOMOUS SELF-TRANSFORMATION (萬物將自化) ]
+       │
+       ▼ [ IF DESIRE/DESYNC ARISES ]
+[ DAMPEN WITH UNNAMED SIMPLICITY (鎮之以無名之樸 ──► 天下將自定) ]</pre>
+        </article>
+
+        <!-- Ch 38 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-amber-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-amber-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-amber-950 border border-amber-800">CH 38</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">上德不德與控制降級 (Hierarchy of Control Degradation)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Control-Degradation] [Master-Enclosure]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">上德不德，是以有德；下德不失德，是以無德。失道而後德，失德而後仁，失仁而後義，失義而後禮。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-amber-300 border border-gray-800/80 overflow-x-auto">[ HIGHEST VIRTUE: NO SELF-CONSCIOUS VIRTUE (上德不德) ]
+       │
+       ▼ [ SYSTEM DEGRADATION CASCADE ]
+  DAO (道) ──► VIRTUE (德) ──► BENEVOLENCE (仁) ──► JUSTICE (義) ──► RITES (禮)
+                                                                    │
+                                                                    ▼
+                                                            [ DISORDER BEGINS ]</pre>
+        </article>
+
+        <!-- Ch 39 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-amber-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-amber-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-amber-950 border border-amber-800">CH 39</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">昔之得一與基底支撐 (Systemic Oneness & Foundation)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Oneness] [Foundation-Support]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">昔之得一者：天得一以清，地得一以寧，神得一以靈，谷得一以盈，萬物得一以生。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-amber-300 border border-gray-800/80 overflow-x-auto">[ SYSTEMIC ONENESS INPUT (得一) ]
+       ├─► HEAVEN CLEAR / EARTH STABLE / SPIRIT DIVINE
+       ├─► VALLEY FILLED / CREATION ALIVE / LORDS RULE
+       │
+       ▼
+[ NOBLE BASED ON HUMBLE (貴以賤為本, 高以為下) ]</pre>
+        </article>
+
+        <!-- Ch 40 -->
+        <article class="p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-amber-700/60 transition">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+            <div>
+              <span class="text-amber-400 font-mono text-xs font-bold px-2 py-0.5 rounded bg-amber-950 border border-amber-800">CH 40</span>
+              <h3 class="text-lg font-bold text-white inline ml-2">反者道之動與有生於無 (Reversal Dynamics & Wu-To-You)</h3>
+            </div>
+            <div class="text-xs font-mono text-gray-500">TAGS: [Reversal-Motion] [Wu-To-You] [Master-Seal]</div>
+          </div>
+          <p class="text-gray-400 text-xs mb-4">反者道之動，弱者道之用。天下萬物生於有，有生於無。《道經》終極拓撲封裝。</p>
+          <pre class="ascii-art p-4 bg-gray-950 rounded-lg text-amber-300 border border-gray-800/80 overflow-x-auto">[ DAO MOTION REGULATOR: REVERSAL (反者道之動) ]
+       │
+       ▼
+[ DAO EXECUTION MODE: YIELDING (弱者道之用) ]
+       │
+       ▼
+[ ONTOLOGICAL CREATION CYCLE ]
+       ( VOID / NON-BEING: 無 )
+                 │
+                 ▼
+       ( MANIFESTED BEING: 有 )
+                 │
+                 ▼
+       ( ALL CREATION: 天下萬物 )
+                 │
+                 ▼
+[ MASTER CIRCUIT ENCLOSURE COMPLETE (CH 01 - 40 SEALED) ]</pre>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-7xl mx-auto px-4 mt-16 pt-8 border-t border-gray-800 text-center text-xs text-gray-500 font-mono">
+    <p>AOE WORLD CIRCUIT &copy; DAO DE JING MASTER TOPOLOGY CONTROL PROTOCOL</p>
+    <p class="mt-2 text-gray-600">PDF1 (Ch 01-10) • PDF2 (Ch 11-20) • PDF3 (Ch 21-30) • PDF4 (Ch 31-40) | Built for Git & GitHub Pages</p>
+  </footer>
 
 </body>
 </html>
