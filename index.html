@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AOE WORLD CIRCUIT - PDF 總目錄</title>
+    <title>AOE WORLD CIRCUIT - 《道德經》四大 PDF 模組化總控台</title>
     <style>
         :root {
             --bg-color: #0b0f19;
@@ -11,28 +11,31 @@
             --border-color: #1f293d;
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
-            --accent: #38bdf8;
+            --accent-cyan: #38bdf8;
+            --accent-purple: #c084fc;
+            --accent-amber: #fbbf24;
+            --accent-emerald: #34d399;
             --btn-bg: #2563eb;
             --btn-hover: #1d4ed8;
         }
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
             margin: 0;
             padding: 40px 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
         }
         .container {
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
         }
         header {
             text-align: center;
             margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
         }
         h1 {
             font-size: 1.8rem;
@@ -45,38 +48,44 @@
             font-size: 0.95rem;
             margin: 0;
         }
-        .pdf-grid {
+        .modules-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 16px;
+            gap: 20px;
         }
-        .pdf-card {
+        .module-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 20px 24px;
+            border-radius: 12px;
+            padding: 24px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            gap: 16px;
             transition: border-color 0.2s ease;
         }
-        .pdf-card:hover {
-            border-color: var(--accent);
+        .module-card:hover {
+            border-color: var(--accent-cyan);
         }
-        .pdf-info h2 {
-            font-size: 1.15rem;
-            margin: 0 0 6px 0;
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .module-title h2 {
+            font-size: 1.25rem;
+            margin: 0 0 4px 0;
             color: var(--text-main);
         }
-        .pdf-info p {
+        .module-title span {
             font-size: 0.85rem;
             color: var(--text-muted);
-            margin: 0;
         }
         .btn-download {
             background-color: var(--btn-bg);
             color: white;
-            padding: 10px 18px;
+            padding: 10px 20px;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
@@ -87,10 +96,30 @@
         .btn-download:hover {
             background-color: var(--btn-hover);
         }
+        .chapter-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 4px;
+        }
+        .chip {
+            background-color: #1a233a;
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        /* 四大模組邊框色系識別 */
+        .card-pdf1 { border-left: 4px solid var(--accent-cyan); }
+        .card-pdf2 { border-left: 4px solid var(--accent-purple); }
+        .card-pdf3 { border-left: 4px solid var(--accent-amber); }
+        .card-pdf4 { border-left: 4px solid var(--accent-emerald); }
+
         footer {
             text-align: center;
             margin-top: 40px;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
         }
     </style>
@@ -99,50 +128,108 @@
 
     <div class="container">
         <header>
-            <h1>AOE WORLD CIRCUIT｜道德經數位資產庫</h1>
-            <p class="subtitle">四大 IP 協同控制電路與系統拓撲總目錄</p>
+            <h1>AOE WORLD CIRCUIT v2.0｜《道德經》四大 PDF 模組總控台</h1>
+            <p class="subtitle">將 01 至 40 章完整 ASCII 拓撲與四大 IP 控制電路切割為獨立可下載模組</p>
         </header>
 
-        <div class="pdf-grid">
-            <!-- PDF 1 -->
-            <div class="pdf-card">
-                <div class="pdf-info">
-                    <h2>PDF 1：道德經 001 - 010 章</h2>
-                    <p>系統拓撲與邏輯清算｜未命名之源頭、對立相生與慾望調節</p>
+        <div class="modules-grid">
+            
+            <!-- PDF 1 模組 -->
+            <div class="module-card card-pdf1">
+                <div class="module-header">
+                    <div class="module-title">
+                        <h2>PDF 1：系統拓撲與邏輯清算</h2>
+                        <span>範圍：第 01 ~ 10 章｜核心：未命名之源頭、對立相生與慾望調節</span>
+                    </div>
+                    <a href="pdf1.pdf" class="btn-download" download>下載 PDF 1 模組</a>
                 </div>
-                <a href="pdf1.pdf" class="btn-download" download>下載 PDF 1</a>
+                <div class="chapter-chips">
+                    <span class="chip">Ch 01: The Signal Before the Name</span>
+                    <span class="chip">Ch 02: Relational Systems</span>
+                    <span class="chip">Ch 03: Desire Throttling</span>
+                    <span class="chip">Ch 04: Open Reservoir</span>
+                    <span class="chip">Ch 05: Neutral Flow Gate</span>
+                    <span class="chip">Ch 06: Recursive Loop</span>
+                    <span class="chip">Ch 07: Distributed Continuity</span>
+                    <span class="chip">Ch 08: Adaptive Flow</span>
+                    <span class="chip">Ch 09: Saturation Regulator</span>
+                    <span class="chip">Ch 10: Integrated Core</span>
+                </div>
             </div>
 
-            <!-- PDF 2 -->
-            <div class="pdf-card">
-                <div class="pdf-info">
-                    <h2>PDF 2：道德經 011 - 020 章</h2>
-                    <p>系統隱性特質與控制電路｜三十幅共一轂、感官過濾與歸根復命</p>
+            <!-- PDF 2 模組 -->
+            <div class="module-card card-pdf2">
+                <div class="module-header">
+                    <div class="module-title">
+                        <h2>PDF 2：系統隱性特質與控制電路</h2>
+                        <span>範圍：第 11 ~ 20 章｜核心：三十幅共一轂、感官過濾與歸根復命</span>
+                    </div>
+                    <a href="pdf2.pdf" class="btn-download" download>下載 PDF 2 模組</a>
                 </div>
-                <a href="pdf2.pdf" class="btn-download" download>下載 PDF 2</a>
+                <div class="chapter-chips">
+                    <span class="chip">Ch 11: Utility of Emptiness</span>
+                    <span class="chip">Ch 12: Sensor Overload</span>
+                    <span class="chip">Ch 13: Ego Decoupling</span>
+                    <span class="chip">Ch 14: Formless Bus</span>
+                    <span class="chip">Ch 15: Entropy Reduction</span>
+                    <span class="chip">Ch 16: Return to Root</span>
+                    <span class="chip">Ch 17: Shadow Governance</span>
+                    <span class="chip">Ch 18: Rule Emergence</span>
+                    <span class="chip">Ch 19: Protocol Purification</span>
+                    <span class="chip">Ch 20: Noise Distancing</span>
+                </div>
             </div>
 
-            <!-- PDF 3 -->
-            <div class="pdf-card">
-                <div class="pdf-info">
-                    <h2>PDF 3：道德經 021 - 030 章</h2>
-                    <p>動態平衡與重力錨定｜孔德之容、四域定律與無痕執行</p>
+            <!-- PDF 3 模組 -->
+            <div class="module-card card-pdf3">
+                <div class="module-header">
+                    <div class="module-title">
+                        <h2>PDF 3：動態平衡與重力錨定</h2>
+                        <span>範圍：第 21 ~ 30 章｜核心：孔德之容、四域定律與無痕執行</span>
+                    </div>
+                    <a href="pdf3.pdf" class="btn-download" download>下載 PDF 3 模組</a>
                 </div>
-                <a href="pdf3.pdf" class="btn-download" download>下載 PDF 3</a>
+                <div class="chapter-chips">
+                    <span class="chip">Ch 21: Implicit Manifestation</span>
+                    <span class="chip">Ch 22: Compensatory Dynamics</span>
+                    <span class="chip">Ch 23: Phase Resonance</span>
+                    <span class="chip">Ch 24: Energy Efficiency</span>
+                    <span class="chip">Ch 25: Four Domains</span>
+                    <span class="chip">Ch 26: Gravity Anchor</span>
+                    <span class="chip">Ch 27: Seamless Execution</span>
+                    <span class="chip">Ch 28: Polarity Equilibrium</span>
+                    <span class="chip">Ch 29: Non-Intervention</span>
+                    <span class="chip">Ch 30: Force Minimization</span>
+                </div>
             </div>
 
-            <!-- PDF 4 -->
-            <div class="pdf-card">
-                <div class="pdf-info">
-                    <h2>PDF 4：道德經 031 - 040 章</h2>
-                    <p>系統控制律與哲學架構｜兵者解耦、知止不殆與反者道之動</p>
+            <!-- PDF 4 模組 -->
+            <div class="module-card card-pdf4">
+                <div class="module-header">
+                    <div class="module-title">
+                        <h2>PDF 4：系統控制律與哲學架構</h2>
+                        <span>範圍：第 31 ~ 40 章｜核心：兵者解耦、知止不殆與反者道之動</span>
+                    </div>
+                    <a href="pdf4.pdf" class="btn-download" download>下載 PDF 4 模組</a>
                 </div>
-                <a href="pdf4.pdf" class="btn-download" download>下載 PDF 4</a>
+                <div class="chapter-chips">
+                    <span class="chip">Ch 31: Force Decoupling</span>
+                    <span class="chip">Ch 32: Boundary Check</span>
+                    <span class="chip">Ch 33: Internal Mastery</span>
+                    <span class="chip">Ch 34: Omnipresent Flow</span>
+                    <span class="chip">Ch 35: Inexhaustible Supply</span>
+                    <span class="chip">Ch 36: Micro-Perception</span>
+                    <span class="chip">Ch 37: Non-Action</span>
+                    <span class="chip">Ch 38: Control Degradation</span>
+                    <span class="chip">Ch 39: Systemic Oneness</span>
+                    <span class="chip">Ch 40: Reversal Dynamics</span>
+                </div>
             </div>
+
         </div>
 
         <footer>
-            AOE ACC PROTOCOL v2.0 &copy; All Rights Reserved.
+            AOE ACC PROTOCOL v2.0 &copy; All Rights Reserved. Ready for GitHub Pages Deployment.
         </footer>
     </div>
 
