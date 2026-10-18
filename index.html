@@ -1,328 +1,150 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AOE WORLD CIRCUIT - DAO DE JING 01-40 MASTER INDEX</title>
-  <style>
-    :root {
-      --bg: #0d1117;
-      --card-bg: #161b22;
-      --border: #30363d;
-      --text: #c9d1d9;
-      --text-bright: #f0f6fc;
-      --dinocat: #00f0ff;
-      --magicat: #ff007f;
-      --devilcat: #ffb700;
-      --liquidcat: #00ff88;
-    }
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
-      margin: 0;
-      padding: 20px;
-      line-height: 1.5;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    header {
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 20px;
-      margin-bottom: 30px;
-    }
-    h1 {
-      color: var(--text-bright);
-      font-size: 2.2rem;
-      margin: 0 0 10px 0;
-      letter-spacing: 1px;
-    }
-    .ip-matrix {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 15px;
-      margin-bottom: 30px;
-    }
-    .ip-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 15px;
-      border-left: 4px solid #fff;
-    }
-    .ip-card.dino { border-left-color: var(--dinocat); }
-    .ip-card.magi { border-left-color: var(--magicat); }
-    .ip-card.devil { border-left-color: var(--devilcat); }
-    .ip-card.liquid { border-left-color: var(--liquidcat); }
-    .ip-title {
-      font-weight: bold;
-      font-size: 1.1rem;
-      color: var(--text-bright);
-    }
-    .pdf-section {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      margin-bottom: 30px;
-      padding: 20px;
-    }
-    .pdf-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-    }
-    .pdf-title {
-      font-size: 1.5rem;
-      color: var(--text-bright);
-    }
-    .btn-download {
-      background: #238636;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .btn-download:hover { background: #2ea043; }
-    .chapter-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    .chapter-card {
-      background: #0d1117;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 15px;
-    }
-    .chapter-title {
-      color: var(--dinocat);
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-    .chapter-quote {
-      color: #8b949e;
-      font-style: italic;
-      margin-bottom: 10px;
-      font-size: 0.95rem;
-    }
-    pre.ascii-art {
-      background: #040d21;
-      color: #58a6ff;
-      padding: 12px;
-      border-radius: 6px;
-      overflow-x: auto;
-      font-family: "Courier New", Courier, monospace;
-      font-size: 0.85rem;
-      line-height: 1.2;
-      border: 1px solid #1f6beb;
-    }
-    .ip-tags {
-      display: flex;
-      gap: 10px;
-      font-size: 0.8rem;
-      margin-top: 10px;
-      flex-wrap: wrap;
-    }
-    .tag {
-      padding: 2px 8px;
-      border-radius: 12px;
-      background: #21262d;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AOE WORLD CIRCUIT - PDF 總目錄</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #131b2e;
+            --border-color: #1f293d;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent: #38bdf8;
+            --btn-bg: #2563eb;
+            --btn-hover: #1d4ed8;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 {
+            font-size: 1.8rem;
+            margin: 0 0 10px 0;
+            color: var(--text-main);
+            letter-spacing: 1px;
+        }
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        .pdf-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        .pdf-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: border-color 0.2s ease;
+        }
+        .pdf-card:hover {
+            border-color: var(--accent);
+        }
+        .pdf-info h2 {
+            font-size: 1.15rem;
+            margin: 0 0 6px 0;
+            color: var(--text-main);
+        }
+        .pdf-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+        .btn-download {
+            background-color: var(--btn-bg);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: background-color 0.2s ease;
+        }
+        .btn-download:hover {
+            background-color: var(--btn-hover);
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+    </style>
 </head>
 <body>
 
-<div class="container">
-  <header>
-    <h1>AOE WORLD CIRCUIT v2.0｜道德經 01-40 數位資產總控台</h1>
-    <p>全架構遵循四大 IP 協同協議：O_DINOCAT (結構)、A_MAGICAT (語境)、B_DEVILCAT (約束)、AB_LIQUIDCAT (轉化)</p>
-  </header>
+    <div class="container">
+        <header>
+            <h1>AOE WORLD CIRCUIT｜道德經數位資產庫</h1>
+            <p class="subtitle">四大 IP 協同控制電路與系統拓撲總目錄</p>
+        </header>
 
-  <!-- 四大 IP 矩陣說明 -->
-  <div class="ip-matrix">
-    <div class="ip-card dino">
-      <div class="ip-title" style="color: var(--dinocat);">O_DINOCAT｜結構</div>
-      <p>掌控章節拓撲、文件 Schema、版面骨架與單頁 11 頁邊界鎖定。</p>
-    </div>
-    <div class="ip-card magi">
-      <div class="ip-title" style="color: var(--magicat);">A_MAGICAT｜語境</div>
-      <p>主導道德經哲學意涵、中文解讀與 AOE 世界觀對齊。</p>
-    </div>
-    <div class="ip-card devil">
-      <div class="ip-title" style="color: var(--devilcat);">B_DEVILCAT｜約束</div>
-      <p>把守字型動態載入、ASCII 64字元行寬防溢位與邊界靜態預檢。</p>
-    </div>
-    <div class="ip-card liquid">
-      <div class="ip-title" style="color: var(--liquidcat);">AB_LIQUIDCAT｜轉化</div>
-      <p>負責 PDF 渲染、多格式流動轉譯與最終 Post-Build Reality Test 現實檢驗。</p>
-    </div>
-  </div>
+        <div class="pdf-grid">
+            <!-- PDF 1 -->
+            <div class="pdf-card">
+                <div class="pdf-info">
+                    <h2>PDF 1：道德經 001 - 010 章</h2>
+                    <p>系統拓撲與邏輯清算｜未命名之源頭、對立相生與慾望調節</p>
+                </div>
+                <a href="pdf1.pdf" class="btn-download" download>下載 PDF 1</a>
+            </div>
 
-  <!-- PDF 1 模組 -->
-  <div class="pdf-section" id="pdf1">
-    <div class="pdf-header">
-      <div class="pdf-title">PDF1｜道德經 001 - 010 系統拓撲與邏輯清算</div>
-      <a href="pdf1.pdf" class="btn-download" download>下載 PDF1</a>
-    </div>
-    <div class="chapter-grid">
-      <div class="chapter-card">
-        <div class="chapter-title">CHAPTER 01｜MARKET_01: THE SIGNAL BEFORE THE NAME</div>
-        <div class="chapter-quote">「道可道，非常道；名可名，非常名。無名天地之始，有名萬物之母。」</div>
-        <pre class="ascii-art">
-[ UNNAMED ]
-      |
-+-----+-----+
-|           |
-[WITHOUT NAME] [WITH A NAME]
-      |           |
-[OPEN POSSIB.] [VISIBLE FORM]
-      |
-[ OBSERVER ]
-      |
-[ CONTEXT / LIMIT ]
-        </pre>
-        <div class="ip-tags">
-          <span class="tag">O_DINOCAT: 雙路分支骨架</span>
-          <span class="tag">A_MAGICAT: 宇宙初始位元</span>
-          <span class="tag">B_DEVILCAT: 行寬鎖定32字元</span>
+            <!-- PDF 2 -->
+            <div class="pdf-card">
+                <div class="pdf-info">
+                    <h2>PDF 2：道德經 011 - 020 章</h2>
+                    <p>系統隱性特質與控制電路｜三十幅共一轂、感官過濾與歸根復命</p>
+                </div>
+                <a href="pdf2.pdf" class="btn-download" download>下載 PDF 2</a>
+            </div>
+
+            <!-- PDF 3 -->
+            <div class="pdf-card">
+                <div class="pdf-info">
+                    <h2>PDF 3：道德經 021 - 030 章</h2>
+                    <p>動態平衡與重力錨定｜孔德之容、四域定律與無痕執行</p>
+                </div>
+                <a href="pdf3.pdf" class="btn-download" download>下載 PDF 3</a>
+            </div>
+
+            <!-- PDF 4 -->
+            <div class="pdf-card">
+                <div class="pdf-info">
+                    <h2>PDF 4：道德經 031 - 040 章</h2>
+                    <p>系統控制律與哲學架構｜兵者解耦、知止不殆與反者道之動</p>
+                </div>
+                <a href="pdf4.pdf" class="btn-download" download>下載 PDF 4</a>
+            </div>
         </div>
-      </div>
 
-      <div class="chapter-card">
-        <div class="chapter-title">CHAPTER 02｜MARKET_02: THE WORLD RUNS ON RELATION</div>
-        <div class="chapter-quote">「天下皆知美之為美，斯惡已；皆知善之為善，斯不善已。」</div>
-        <pre class="ascii-art">
-[ BEAUTIFUL ] <-----> [ UGLY ]
-         \           /
-      [ MUTUAL RECOGNITION ]
-         /           \
-   [ DIFFICULT ] <-----> [ EASY ]
-            |
-  [ RELATION ENGINE ]
-            |
-[ ACTION WITHOUT GRASPING ]
-        </pre>
-      </div>
-
-      <div class="chapter-card">
-        <div class="chapter-title">CHAPTER 05｜MARKET_05: THE SYSTEM DOES NOT TAKE SIDES</div>
-        <div class="chapter-quote">「天地不仁，以萬物為芻狗；聖人不仁，以百姓為芻狗。」</div>
-        <pre class="ascii-art">
-[ INPUT A ]
-      |
-[ FLOW GATE ] <---> [ RULES / CONDITIONS ]
-      |
-[ INPUT B ]
-      |
-[ OUTPUT RESPONSE ]
-        </pre>
-      </div>
+        <footer>
+            AOE ACC PROTOCOL v2.0 &copy; All Rights Reserved.
+        </footer>
     </div>
-  </div>
-
-  <!-- PDF 2 模組 -->
-  <div class="pdf-section" id="pdf2">
-    <div class="pdf-header">
-      <div class="pdf-title">PDF2｜道德經 011 - 020 系統拓撲與控制電路</div>
-      <a href="pdf2.pdf" class="btn-download" download>下載 PDF2</a>
-    </div>
-    <div class="chapter-grid">
-      <div class="chapter-card">
-        <div class="chapter-title">CHAPTER 11｜MARKET_11: THE FUNCTIONALITY OF EMPTY SPACE</div>
-        <div class="chapter-quote">「三十輻共一轂，當其無，有車之用。埏埴以為器，當其無，有器之用。」</div>
-        <pre class="ascii-art">
-[SOLID FRAME / SPOKES]
-          |
-  { CENTROID HUB VOID } <--- (UTILITY OPERATIVE)
-          |
-  [ CONTAINER CAPACITY ]
-        </pre>
-      </div>
-
-      <div class="chapter-card">
-        <div class="chapter-title">CHAPTER 16｜MARKET_16: RETURN TO THE ROOT STATE</div>
-        <div class="chapter-quote">「致虛極，守靜篤。萬物並作，吾以觀復。夫物芸芸，各復歸其根。」</div>
-        <pre class="ascii-art">
-[EXUBERANT MULTIPLICITY]
-          |
-   v [ OBSERVE LOOPS ]
-          |
- v { RETURN TO ROOT } <--- (STATIONARY GROUND)
-        </pre>
-      </div>
-    </div>
-  </div>
-
-  <!-- PDF 3 模組 -->
-  <div class="pdf-section" id="pdf3">
-    <div class="pdf-header">
-      <div class="pdf-title">PDF3｜道德經 021 - 030 系統隱性特質與動態平衡</div>
-      <a href="pdf3.pdf" class="btn-download" download>下載 PDF3</a>
-    </div>
-    <div class="chapter-grid">
-      <div class="chapter-card">
-        <div class="chapter-title">CHAPTER 25｜MARKET_25: FOUR GREAT REALMS AND NATURAL LAW</div>
-        <div class="chapter-quote">「人法地，地法天，天法道，道法自然。」</div>
-        <pre class="ascii-art">
-[HUMAN / AGENT] ---> [EARTH / INFRA] ---> [HEAVEN / LAWS]
-                                                  |
-                                           v [TAO / COSMOS]
-                                                  |
-                                           v [ ZIRAN / SELF-SO ]
-        </pre>
-      </div>
-
-      <div class="chapter-card">
-        <div class="chapter-title">CHAPTER 26｜MARKET_26: GRAVITY ANCHOR AND STILLNESS CONTROL</div>
-        <div class="chapter-quote">「重為輕根，靜為躁君。是以君子終日行不離輜重。」</div>
-        <pre class="ascii-art">
-[DYNAMIC MOTION / NOISE]
-          |
-v { GRAVITY ANCHOR: HEAVY } <--- (CONTROL CENTER: STILL)
-        </pre>
-      </div>
-    </div>
-  </div>
-
-  <!-- PDF 4 模組 -->
-  <div class="pdf-section" id="pdf4">
-    <div class="pdf-header">
-      <div class="pdf-title">PDF4｜道德經 031 - 040 系統控制律與哲學架構</div>
-      <a href="pdf4.pdf" class="btn-download" download>下載 PDF4</a>
-    </div>
-    <div class="chapter-grid">
-      <div class="chapter-card">
-        <div class="chapter-title">CHAPTER 32｜MARKET_32: UNNAMED SIMPLICITY AND BOUNDARY CONTROL</div>
-        <div class="chapter-quote">「始制有名，名亦既有，夫亦將知止，知止可以不殆。」</div>
-        <pre class="ascii-art">
-[UNNAMED CORE (PU)] ---> [NOMINAL SYSTEM (NAMES)]
-                                    |
-                        v { BOUNDARY: ZHI-ZHI }
-                                    |
-                           [ PREVENT DANGER ]
-        </pre>
-      </div>
-
-      <div class="chapter-card">
-        <div class="chapter-title">CHAPTER 40｜MARKET_40: REVERSAL DYNAMICS AND ORIGIN OF BEING</div>
-        <div class="chapter-quote">「反者道之動，弱者道之用。天下萬物生於有，有生於無。」</div>
-        <pre class="ascii-art">
-[NOTHINGNESS (WU)] ---> [SOMETHINGNESS (YOU)]
-        ^                        |
-        +-- { REVERSAL MOTION } -+
-        </pre>
-      </div>
-    </div>
-  </div>
-
-</div>
 
 </body>
 </html>
